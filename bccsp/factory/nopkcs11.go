@@ -1,3 +1,4 @@
+//go:build !pkcs11
 // +build !pkcs11
 
 /*
@@ -49,6 +50,7 @@ func initFactories(config *FactoryOpts) error {
 
 	// Software-Based BCCSP
 	if config.ProviderName == "SW" && config.SwOpts != nil {
+		logger.Infof("InitFactories -> %s", config.ProviderName)
 		f := &GMFactory{}
 		var err error
 		defaultBCCSP, err = initBCCSP(f, config)
@@ -58,6 +60,7 @@ func initFactories(config *FactoryOpts) error {
 	}
 	// Software-Based BCCSP
 	if config.ProviderName == "GM" && config.SwOpts != nil {
+		logger.Infof("InitFactories -> %s", config.ProviderName)
 		f := &GMFactory{}
 		var err error
 		defaultBCCSP, err = initBCCSP(f, config)
@@ -75,6 +78,7 @@ func initFactories(config *FactoryOpts) error {
 
 // GetBCCSPFromOpts returns a BCCSP created according to the options passed in input.
 func GetBCCSPFromOpts(config *FactoryOpts) (bccsp.BCCSP, error) {
+	logger.Infof("GetBCCSPFromOpts -> %s", config.ProviderName)
 	var f BCCSPFactory
 	switch config.ProviderName {
 	case "GM":

@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-	 http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -70,8 +70,9 @@ func SM4Decrypt(key, src []byte) ([]byte, error) {
 
 type gmsm4Encryptor struct{}
 
-//实现 Encryptor 接口
+// 实现 Encryptor 接口
 func (*gmsm4Encryptor) Encrypt(k bccsp.Key, plaintext []byte, opts bccsp.EncrypterOpts) (ciphertext []byte, err error) {
+	logger.Infof("bccsp gm gmsm4Encryptor Encrypt")
 
 	return SM4Encrypt(k.(*gmsm4PrivateKey).privKey, plaintext)
 	//return AESCBCPKCS7Encrypt(k.(*sm4PrivateKey).privKey, plaintext)
@@ -84,8 +85,9 @@ func (*gmsm4Encryptor) Encrypt(k bccsp.Key, plaintext []byte, opts bccsp.Encrypt
 
 type gmsm4Decryptor struct{}
 
-//实现 Decryptor 接口
+// 实现 Decryptor 接口
 func (*gmsm4Decryptor) Decrypt(k bccsp.Key, ciphertext []byte, opts bccsp.DecrypterOpts) (plaintext []byte, err error) {
+	logger.Infof("bccsp gm gmsm4Encryptor Decrypt")
 
 	return SM4Decrypt(k.(*gmsm4PrivateKey).privKey, ciphertext)
 	// var dc = make([]byte, 16)

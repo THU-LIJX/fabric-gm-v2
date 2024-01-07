@@ -96,7 +96,7 @@ include docker-env.mk
 include gotools.mk
 
 .PHONY: all
-all: check-go-version native docker checks
+all: check-go-version native docker
 
 .PHONY: checks
 checks: basic-checks unit-test integration-test

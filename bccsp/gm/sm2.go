@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-	 http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -89,12 +89,14 @@ func verifyGMSM2(k *sm2.PublicKey, signature, digest []byte, opts bccsp.SignerOp
 type gmsm2Signer struct{}
 
 func (s *gmsm2Signer) Sign(k bccsp.Key, digest []byte, opts bccsp.SignerOpts) (signature []byte, err error) {
+	logger.Infof("bccsp gm gmsm2Signer Sign")
 	return signGMSM2(k.(*gmsm2PrivateKey).privKey, digest, opts)
 }
 
 type ecdsaPrivateKeySigner struct{}
 
 func (s *ecdsaPrivateKeySigner) Sign(k bccsp.Key, digest []byte, opts bccsp.SignerOpts) (signature []byte, err error) {
+	logger.Infof("bccsp gm ecdsaPrivateKeySigner Sign")
 	puk := k.(*ecdsaPrivateKey).privKey.PublicKey
 	sm2pk := sm2.PublicKey{
 		Curve: puk.Curve,
@@ -114,18 +116,21 @@ func (s *ecdsaPrivateKeySigner) Sign(k bccsp.Key, digest []byte, opts bccsp.Sign
 type gmsm2PrivateKeyVerifier struct{}
 
 func (v *gmsm2PrivateKeyVerifier) Verify(k bccsp.Key, signature, digest []byte, opts bccsp.SignerOpts) (valid bool, err error) {
+	logger.Infof("bccsp gm gmsm2PrivateKeyVerifier Verify")
 	return verifyGMSM2(&(k.(*gmsm2PrivateKey).privKey.PublicKey), signature, digest, opts)
 }
 
 type gmsm2PublicKeyKeyVerifier struct{}
 
 func (v *gmsm2PublicKeyKeyVerifier) Verify(k bccsp.Key, signature, digest []byte, opts bccsp.SignerOpts) (valid bool, err error) {
+	logger.Infof("bccsp gm gmsm2PublicKeyKeyVerifier Verify")
 	return verifyGMSM2(k.(*gmsm2PublicKey).pubKey, signature, digest, opts)
 }
 
 type ecdsaPrivateKeyVerifier struct{}
 
 func (v *ecdsaPrivateKeyVerifier) Verify(k bccsp.Key, signature, digest []byte, opts bccsp.SignerOpts) (valid bool, err error) {
+	logger.Infof("bccsp gm ecdsaPrivateKeyVerifier Verify")
 	puk := k.(*ecdsaPrivateKey).privKey.PublicKey
 	sm2pk := sm2.PublicKey{
 		Curve: puk.Curve,
@@ -138,6 +143,7 @@ func (v *ecdsaPrivateKeyVerifier) Verify(k bccsp.Key, signature, digest []byte, 
 type ecdsaPublicKeyKeyVerifier struct{}
 
 func (v *ecdsaPublicKeyKeyVerifier) Verify(k bccsp.Key, signature, digest []byte, opts bccsp.SignerOpts) (valid bool, err error) {
+	logger.Infof("bccsp gm ecdsaPublicKeyKeyVerifier Verify")
 	puk := k.(*ecdsaPublicKey).pubKey
 	sm2pk := sm2.PublicKey{
 		Curve: puk.Curve,

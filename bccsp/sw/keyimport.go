@@ -20,6 +20,7 @@ import (
 type aes256ImportKeyOptsKeyImporter struct{}
 
 func (*aes256ImportKeyOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.KeyImportOpts) (bccsp.Key, error) {
+	logger.Infof("bccsp sw aes256ImportKeyOptsKeyImporter KeyImport")
 	aesRaw, ok := raw.([]byte)
 	if !ok {
 		return nil, errors.New("Invalid raw material. Expected byte array.")
@@ -39,6 +40,7 @@ func (*aes256ImportKeyOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.Key
 type hmacImportKeyOptsKeyImporter struct{}
 
 func (*hmacImportKeyOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.KeyImportOpts) (bccsp.Key, error) {
+	logger.Infof("bccsp sw hmacImportKeyOptsKeyImporter KeyImport")
 	aesRaw, ok := raw.([]byte)
 	if !ok {
 		return nil, errors.New("Invalid raw material. Expected byte array.")
@@ -54,6 +56,7 @@ func (*hmacImportKeyOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.KeyIm
 type ecdsaPKIXPublicKeyImportOptsKeyImporter struct{}
 
 func (*ecdsaPKIXPublicKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.KeyImportOpts) (bccsp.Key, error) {
+	logger.Infof("bccsp sw ecdsaPKIXPublicKeyImportOptsKeyImporter KeyImport")
 	der, ok := raw.([]byte)
 	if !ok {
 		return nil, errors.New("Invalid raw material. Expected byte array.")
@@ -79,6 +82,7 @@ func (*ecdsaPKIXPublicKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts 
 type ecdsaPrivateKeyImportOptsKeyImporter struct{}
 
 func (*ecdsaPrivateKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.KeyImportOpts) (bccsp.Key, error) {
+	logger.Infof("bccsp sw ecdsaPrivateKeyImportOptsKeyImporter KeyImport")
 	der, ok := raw.([]byte)
 	if !ok {
 		return nil, errors.New("[ECDSADERPrivateKeyImportOpts] Invalid raw material. Expected byte array.")
@@ -104,6 +108,7 @@ func (*ecdsaPrivateKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bcc
 type ecdsaGoPublicKeyImportOptsKeyImporter struct{}
 
 func (*ecdsaGoPublicKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.KeyImportOpts) (bccsp.Key, error) {
+	logger.Infof("bccsp sw ecdsaGoPublicKeyImportOptsKeyImporter KeyImport")
 	lowLevelKey, ok := raw.(*ecdsa.PublicKey)
 	if !ok {
 		return nil, errors.New("Invalid raw material. Expected *ecdsa.PublicKey.")
@@ -117,6 +122,7 @@ type x509PublicKeyImportOptsKeyImporter struct {
 }
 
 func (ki *x509PublicKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.KeyImportOpts) (bccsp.Key, error) {
+	logger.Infof("bccsp sw x509PublicKeyImportOptsKeyImporter KeyImport")
 	sm2Cert, ok := raw.(*sm2.Certificate)
 	if !ok {
 		return nil, errors.New("Invalid raw material. Expected *x509.Certificate.")
@@ -150,6 +156,7 @@ func (ki *x509PublicKeyImportOptsKeyImporter) KeyImport(raw interface{}, opts bc
 type gmsm4ImportKeyOptsKeyImporter struct{}
 
 func (*gmsm4ImportKeyOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.KeyImportOpts) (k bccsp.Key, err error) {
+	logger.Infof("bccsp sw gmsm4ImportKeyOptsKeyImporter KeyImport")
 	sm4Raw, ok := raw.([]byte)
 	if !ok {
 		return nil, errors.New("Invalid raw material, Expected byte array")
@@ -165,6 +172,7 @@ func (*gmsm4ImportKeyOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.KeyI
 type gmsm2PrivateKeyOptsKeyImporter struct{}
 
 func (*gmsm2PrivateKeyOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.KeyImportOpts) (k bccsp.Key, err error) {
+	logger.Infof("bccsp sw gmsm2PrivateKeyOptsKeyImporter KeyImport")
 	der, ok := raw.([]byte)
 	if !ok {
 		return nil, errors.New("Invalid raw material, Expected byte array")
@@ -186,6 +194,7 @@ func (*gmsm2PrivateKeyOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.Key
 type gmsm2PublicKeyOptsKeyImporter struct{}
 
 func (*gmsm2PublicKeyOptsKeyImporter) KeyImport(raw interface{}, opts bccsp.KeyImportOpts) (k bccsp.Key, err error) {
+	logger.Infof("bccsp sw gmsm2PublicKeyOptsKeyImporter KeyImport")
 	der, ok := raw.([]byte)
 	if !ok {
 		return nil, errors.New("Invalid raw material, Expected byte array")

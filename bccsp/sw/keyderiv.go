@@ -29,12 +29,14 @@ import (
 type smPublicKeyKeyDeriver struct{}
 
 func (kd *smPublicKeyKeyDeriver) KeyDeriv(key bccsp.Key, opts bccsp.KeyDerivOpts) (bccsp.Key, error) {
+	logger.Infof("bccsp sw smPublicKeyKeyDeriver KeyDeriv")
 	return nil, errors.New("Not implemented")
 }
 
 type ecdsaPublicKeyKeyDeriver struct{}
 
 func (kd *ecdsaPublicKeyKeyDeriver) KeyDeriv(key bccsp.Key, opts bccsp.KeyDerivOpts) (bccsp.Key, error) {
+	logger.Infof("bccsp sw ecdsaPublicKeyKeyDeriver KeyDeriv")
 	// Validate opts
 	if opts == nil {
 		return nil, errors.New("Invalid opts parameter. It must not be nil.")
@@ -79,6 +81,7 @@ func (kd *ecdsaPublicKeyKeyDeriver) KeyDeriv(key bccsp.Key, opts bccsp.KeyDerivO
 type ecdsaPrivateKeyKeyDeriver struct{}
 
 func (kd *ecdsaPrivateKeyKeyDeriver) KeyDeriv(key bccsp.Key, opts bccsp.KeyDerivOpts) (bccsp.Key, error) {
+	logger.Infof("bccsp sw ecdsaPrivateKeyKeyDeriver KeyDeriv")
 	// Validate opts
 	if opts == nil {
 		return nil, errors.New("Invalid opts parameter. It must not be nil.")
@@ -132,6 +135,7 @@ type aesPrivateKeyKeyDeriver struct {
 }
 
 func (kd *aesPrivateKeyKeyDeriver) KeyDeriv(k bccsp.Key, opts bccsp.KeyDerivOpts) (bccsp.Key, error) {
+	logger.Infof("bccsp sw aesPrivateKeyKeyDeriver KeyDeriv")
 	// Validate opts
 	if opts == nil {
 		return nil, errors.New("Invalid opts parameter. It must not be nil.")
