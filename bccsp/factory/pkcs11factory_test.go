@@ -11,7 +11,7 @@ package factory
 import (
 	"testing"
 
-	"github.com/VoneChain-CS/fabric-gm/bccsp/pkcs11"
+	"github.com/hyperledger/fabric/bccsp/pkcs11"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -42,7 +42,7 @@ func TestPKCS11FactoryGet(t *testing.T) {
 
 	opts := &FactoryOpts{
 		Pkcs11Opts: &pkcs11.PKCS11Opts{
-			SecLevel:   256,
+			Security:   256,
 			HashFamily: "SHA2",
 			Library:    lib,
 			Pin:        pin,
@@ -55,7 +55,7 @@ func TestPKCS11FactoryGet(t *testing.T) {
 
 	opts = &FactoryOpts{
 		Pkcs11Opts: &pkcs11.PKCS11Opts{
-			SecLevel:   256,
+			Security:   256,
 			HashFamily: "SHA2",
 			Library:    lib,
 			Pin:        pin,
@@ -68,7 +68,7 @@ func TestPKCS11FactoryGet(t *testing.T) {
 
 	opts = &FactoryOpts{
 		Pkcs11Opts: &pkcs11.PKCS11Opts{
-			SecLevel:   256,
+			Security:   256,
 			HashFamily: "SHA2",
 			Ephemeral:  true,
 			Library:    lib,
@@ -87,7 +87,7 @@ func TestPKCS11FactoryGetEmptyKeyStorePath(t *testing.T) {
 
 	opts := &FactoryOpts{
 		Pkcs11Opts: &pkcs11.PKCS11Opts{
-			SecLevel:   256,
+			Security:   256,
 			HashFamily: "SHA2",
 			Library:    lib,
 			Pin:        pin,
@@ -100,7 +100,7 @@ func TestPKCS11FactoryGetEmptyKeyStorePath(t *testing.T) {
 
 	opts = &FactoryOpts{
 		Pkcs11Opts: &pkcs11.PKCS11Opts{
-			SecLevel:   256,
+			Security:   256,
 			HashFamily: "SHA2",
 			Library:    lib,
 			Pin:        pin,
