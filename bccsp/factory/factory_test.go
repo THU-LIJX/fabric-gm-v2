@@ -61,8 +61,8 @@ BCCSP:
 
 	cfgVariations := []*FactoryOpts{
 		{},
-		{ProviderName: "GM"},
-		{ProviderName: "GM", SwOpts: &SwOpts{HashFamily: "GMSM3", SecLevel: 256, Ephemeral: true}},
+		{Default: "GM"},
+		{Default: "GM", SwOpts: &SwOpts{HashFamily: "GMSM3", Security: 256, Ephemeral: true}},
 		yamlBCCSP,
 	}
 

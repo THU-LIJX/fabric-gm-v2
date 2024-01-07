@@ -137,8 +137,8 @@ func SetupBCCSPKeystoreConfig(bccspConfig *factory.FactoryOpts, keystoreDir stri
 		bccspConfig = factory.GetDefaultOpts()
 	}
 
-	mspLogger.Infof("bccspConfig.ProviderName---,%v",bccspConfig.ProviderName)
-	if bccspConfig.ProviderName == "GM" || bccspConfig.SwOpts != nil {
+	mspLogger.Infof("bccspConfig.Default---,%v",bccspConfig.Default)
+	if bccspConfig.Default == "GM" || bccspConfig.SwOpts != nil {
 		if bccspConfig.SwOpts == nil {
 			bccspConfig.SwOpts = factory.GetDefaultOpts().SwOpts
 		}
@@ -150,7 +150,7 @@ func SetupBCCSPKeystoreConfig(bccspConfig *factory.FactoryOpts, keystoreDir stri
 			bccspConfig.SwOpts.FileKeystore = &factory.FileKeystoreOpts{KeyStorePath: keystoreDir}
 		}
 	}
-	if bccspConfig.ProviderName == "SW" || bccspConfig.SwOpts != nil {
+	if bccspConfig.Default == "SW" || bccspConfig.SwOpts != nil {
 		if bccspConfig.SwOpts == nil {
 			bccspConfig.SwOpts = factory.GetDefaultOpts().SwOpts
 		}

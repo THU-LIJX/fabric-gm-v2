@@ -94,7 +94,7 @@ func testMain(m *testing.M) int {
 		currentTestConfig = config
 
 		opts.HashFamily = config.hashFamily
-		opts.SecLevel = config.securityLevel
+		opts.Security = config.securityLevel
 		opts.SoftVerify = config.softVerify
 		opts.Immutable = config.immutable
 		fmt.Printf("Immutable = [%v]\n", opts.Immutable)
@@ -116,7 +116,7 @@ func testMain(m *testing.M) int {
 func TestNew(t *testing.T) {
 	opts := PKCS11Opts{
 		HashFamily: "SHA2",
-		SecLevel:   256,
+		Security:   256,
 		SoftVerify: false,
 		Library:    "lib",
 		Label:      "ForFabric",
@@ -177,7 +177,7 @@ func TestInvalidNewParameter(t *testing.T) {
 	}
 
 	opts.HashFamily = "SHA2"
-	opts.SecLevel = 0
+	opts.Security = 0
 	r, err := New(opts, currentKS)
 	if err == nil {
 		t.Fatal("Error should be different from nil in this case")
@@ -187,7 +187,7 @@ func TestInvalidNewParameter(t *testing.T) {
 	}
 
 	opts.HashFamily = "SHA8"
-	opts.SecLevel = 256
+	opts.Security = 256
 	r, err = New(opts, currentKS)
 	if err == nil {
 		t.Fatal("Error should be different from nil in this case")
@@ -197,7 +197,7 @@ func TestInvalidNewParameter(t *testing.T) {
 	}
 
 	opts.HashFamily = "SHA2"
-	opts.SecLevel = 256
+	opts.Security = 256
 	r, err = New(opts, nil)
 	if err == nil {
 		t.Fatal("Error should be different from nil in this case")
@@ -207,7 +207,7 @@ func TestInvalidNewParameter(t *testing.T) {
 	}
 
 	opts.HashFamily = "SHA3"
-	opts.SecLevel = 0
+	opts.Security = 0
 	r, err = New(opts, nil)
 	if err == nil {
 		t.Fatal("Error should be different from nil in this case")
