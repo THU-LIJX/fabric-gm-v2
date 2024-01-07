@@ -4,21 +4,21 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/VoneChain-CS/fabric-gm/bccsp"
-	"github.com/VoneChain-CS/fabric-gm/bccsp/gm"
+	"github.com/hyperledger/fabric/bccsp"
+	"github.com/hyperledger/fabric/bccsp/gm"
 )
 
 const (
-	// GuomiBasedFactoryName is the name of the factory of the software-based BCCSP implementation
-	GuomiBasedFactoryName = "GM"
+	// GMBasedFactoryName is the name of the factory of the software-based BCCSP implementation
+	GMBasedFactoryName = "GM"
 )
 
-// GMFactory is the factory of the guomi-based BCCSP.
+// GMFactory is the factory of the GMbased BCCSP.
 type GMFactory struct{}
 
 // Name returns the name of this factory
 func (f *GMFactory) Name() string {
-	return GuomiBasedFactoryName
+	return GMBasedFactoryName
 }
 
 // Get returns an instance of BCCSP using Opts.
@@ -44,6 +44,6 @@ func (f *GMFactory) Get(config *FactoryOpts) (bccsp.BCCSP, error) {
 		ks = gm.NewDummyKeyStore()
 	}
 
-	return gm.New(gmOpts.SecLevel, "GMSM3", ks)
-	//return gm.New(gmOpts.SecLevel, gmOpts.HashFamily, ks)
+	return gm.New(gmOpts.Security, "GMSM3", ks)
+	//return gm.New(gmOpts.Security, gmOpts.HashFamily, ks)
 }

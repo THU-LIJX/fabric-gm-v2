@@ -12,7 +12,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/VoneChain-CS/fabric-gm/bccsp/pkcs11"
+	"github.com/hyperledger/fabric/bccsp/pkcs11"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -34,13 +34,13 @@ func TestInitFactories(t *testing.T) {
 
 func TestInitFactoriesInvalidArgs(t *testing.T) {
 	err := initFactories(&FactoryOpts{
-		ProviderName: "SW",
+		Default: "SW",
 		SwOpts:       &SwOpts{},
 	})
 	assert.EqualError(t, err, "Failed initializing SW.BCCSP: Could not initialize BCCSP SW [Failed initializing configuration at [0,]: Hash Family not supported []]")
 
 	err = initFactories(&FactoryOpts{
-		ProviderName: "PKCS11",
+		Default: "PKCS11",
 		Pkcs11Opts:   &pkcs11.PKCS11Opts{},
 	})
 	assert.EqualError(t, err, "Failed initializing PKCS11.BCCSP: Could not initialize BCCSP PKCS11 [Failed initializing configuration: Hash Family not supported []]")
@@ -56,9 +56,9 @@ func TestGetBCCSPFromOpts(t *testing.T) {
 
 	lib, pin, label := pkcs11.FindPKCS11Lib()
 	csp, err = GetBCCSPFromOpts(&FactoryOpts{
-		ProviderName: "PKCS11",
+		Default: "PKCS11",
 		Pkcs11Opts: &pkcs11.PKCS11Opts{
-			SecLevel:   256,
+			Security:   256,
 			HashFamily: "SHA2",
 			Ephemeral:  true,
 			Library:    lib,
@@ -70,7 +70,7 @@ func TestGetBCCSPFromOpts(t *testing.T) {
 	assert.NotNil(t, csp)
 
 	csp, err = GetBCCSPFromOpts(&FactoryOpts{
-		ProviderName: "BadName",
+		Default: "BadName",
 	})
 	assert.EqualError(t, err, "Could not find BCCSP, no 'BadName' provider")
 	assert.Nil(t, csp)

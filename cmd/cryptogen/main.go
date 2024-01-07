@@ -8,16 +8,16 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"github.com/VoneChain-CS/fabric-gm/internal/cryptogen/csp"
+	"github.com/hyperledger/fabric/internal/cryptogen/csp"
 	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"text/template"
 
-	"github.com/VoneChain-CS/fabric-gm/internal/cryptogen/ca"
-	"github.com/VoneChain-CS/fabric-gm/internal/cryptogen/metadata"
-	"github.com/VoneChain-CS/fabric-gm/internal/cryptogen/msp"
+	"github.com/hyperledger/fabric/internal/cryptogen/ca"
+	"github.com/hyperledger/fabric/internal/cryptogen/metadata"
+	"github.com/hyperledger/fabric/internal/cryptogen/msp"
 
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 	yaml "gopkg.in/yaml.v2"
@@ -729,7 +729,7 @@ func printVersion() {
 func getCA(caDir string, spec OrgSpec, name string) *ca.CA {
 	//TODO
 	priv, _ := csp.LoadPrivateKey(caDir)
-	cert, _ := ca.LoadCertificateGMSM2(caDir)
+	cert, _ := ca.LoadCertificateSM2(caDir)
 
 	return &ca.CA{
 		Name:               name,

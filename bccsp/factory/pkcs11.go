@@ -9,8 +9,8 @@ SPDX-License-Identifier: Apache-2.0
 package factory
 
 import (
-	"github.com/VoneChain-CS/fabric-gm/bccsp"
-	"github.com/VoneChain-CS/fabric-gm/bccsp/pkcs11"
+	"github.com/hyperledger/fabric/bccsp"
+	"github.com/hyperledger/fabric/bccsp/pkcs11"
 	"github.com/pkg/errors"
 )
 
@@ -18,7 +18,7 @@ const pkcs11Enabled = false
 
 // FactoryOpts holds configuration information used to initialize factory implementations
 type FactoryOpts struct {
-	ProviderName string             `mapstructure:"default" json:"default" yaml:"Default"`
+	Default string             `mapstructure:"default" json:"default" yaml:"Default"`
 	SwOpts       *SwOpts            `mapstructure:"SW,omitempty" json:"SW,omitempty" yaml:"SwOpts"`
 	Pkcs11Opts   *pkcs11.PKCS11Opts `mapstructure:"PKCS11,omitempty" json:"PKCS11,omitempty" yaml:"PKCS11"`
 }
@@ -41,8 +41,8 @@ func initFactories(config *FactoryOpts) error {
 		config = GetDefaultOpts()
 	}
 
-	if config.ProviderName == "" {
-		config.ProviderName = "GM"
+	if config.Default == "" {
+		config.Default = "GM"
 	}
 
 	if config.SwOpts == nil {
@@ -50,7 +50,7 @@ func initFactories(config *FactoryOpts) error {
 	}
 
 	// Software-Based BCCSP
-	if config.ProviderName == "GM" && config.SwOpts != nil {
+	if config.Default == "GM" && config.SwOpts != nil {
 		f := &GMFactory{}
 		var err error
 		defaultBCCSP, err = initBCCSP(f, config)
@@ -60,7 +60,7 @@ func initFactories(config *FactoryOpts) error {
 	}
 
 	// Software-Based BCCSP
-	if config.ProviderName == "SW" && config.SwOpts != nil {
+	if config.Default == "SW" && config.SwOpts != nil {
 		f := &SWFactory{}
 		var err error
 		defaultBCCSP, err = initBCCSP(f, config)
@@ -70,7 +70,7 @@ func initFactories(config *FactoryOpts) error {
 	}
 
 	// PKCS11-Based BCCSP
-	if config.ProviderName == "PKCS11" && config.Pkcs11Opts != nil {
+	if config.Default == "PKCS11" && config.Pkcs11Opts != nil {
 		f := &PKCS11Factory{}
 		var err error
 		defaultBCCSP, err = initBCCSP(f, config)
@@ -80,7 +80,7 @@ func initFactories(config *FactoryOpts) error {
 	}
 
 	if defaultBCCSP == nil {
-		return errors.Errorf("Could not find default `%s` BCCSP", config.ProviderName)
+		return errors.Errorf("Could not find default `%s` BCCSP", config.Default)
 	}
 
 	return nil
@@ -89,7 +89,7 @@ func initFactories(config *FactoryOpts) error {
 // GetBCCSPFromOpts returns a BCCSP created according to the options passed in input.
 func GetBCCSPFromOpts(config *FactoryOpts) (bccsp.BCCSP, error) {
 	var f BCCSPFactory
-	switch config.ProviderName {
+	switch config.Default {
 	case "GM":
 		f = &GMFactory{}
 	case "SW":
@@ -97,7 +97,7 @@ func GetBCCSPFromOpts(config *FactoryOpts) (bccsp.BCCSP, error) {
 	case "PKCS11":
 		f = &PKCS11Factory{}
 	default:
-		return nil, errors.Errorf("Could not find BCCSP, no '%s' provider", config.ProviderName)
+		return nil, errors.Errorf("Could not find BCCSP, no '%s' provider", config.Default)
 	}
 
 	csp, err := f.Get(config)

@@ -14,8 +14,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/VoneChain-CS/fabric-gm/internal/cryptogen/ca"
-	"github.com/VoneChain-CS/fabric-gm/internal/cryptogen/csp"
+	"github.com/hyperledger/fabric/internal/cryptogen/ca"
+	"github.com/hyperledger/fabric/internal/cryptogen/csp"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -81,7 +81,7 @@ func TestLoadCertificateECDSA(t *testing.T) {
 		cert.KeyUsage)
 	assert.Contains(t, cert.ExtKeyUsage, sm2.ExtKeyUsageAny)
 
-	loadedCert, err := ca.LoadCertificateGMSM2(certDir)
+	loadedCert, err := ca.LoadCertificateSM2(certDir)
 	assert.NoError(t, err)
 	assert.NotNil(t, loadedCert, "Should load cert")
 	assert.Equal(t, cert.SerialNumber, loadedCert.SerialNumber, "Should have same serial number")

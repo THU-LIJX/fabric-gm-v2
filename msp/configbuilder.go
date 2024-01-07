@@ -14,8 +14,8 @@ import (
 
 	"github.com/golang/protobuf/proto"
 	"github.com/hyperledger/fabric-protos-go/msp"
-	"github.com/VoneChain-CS/fabric-gm/bccsp"
-	"github.com/VoneChain-CS/fabric-gm/bccsp/factory"
+	"github.com/hyperledger/fabric/bccsp"
+	"github.com/hyperledger/fabric/bccsp/factory"
 	"github.com/pkg/errors"
 	"gopkg.in/yaml.v2"
 )
@@ -137,8 +137,8 @@ func SetupBCCSPKeystoreConfig(bccspConfig *factory.FactoryOpts, keystoreDir stri
 		bccspConfig = factory.GetDefaultOpts()
 	}
 
-	mspLogger.Infof("bccspConfig.ProviderName---,%v",bccspConfig.ProviderName)
-	if bccspConfig.ProviderName == "GM" || bccspConfig.SwOpts != nil {
+	mspLogger.Infof("bccspConfig.Default---,%v",bccspConfig.Default)
+	if bccspConfig.Default == "GM" || bccspConfig.SwOpts != nil {
 		if bccspConfig.SwOpts == nil {
 			bccspConfig.SwOpts = factory.GetDefaultOpts().SwOpts
 		}
@@ -150,7 +150,7 @@ func SetupBCCSPKeystoreConfig(bccspConfig *factory.FactoryOpts, keystoreDir stri
 			bccspConfig.SwOpts.FileKeystore = &factory.FileKeystoreOpts{KeyStorePath: keystoreDir}
 		}
 	}
-	if bccspConfig.ProviderName == "SW" || bccspConfig.SwOpts != nil {
+	if bccspConfig.Default == "SW" || bccspConfig.SwOpts != nil {
 		if bccspConfig.SwOpts == nil {
 			bccspConfig.SwOpts = factory.GetDefaultOpts().SwOpts
 		}

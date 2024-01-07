@@ -24,7 +24,7 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/VoneChain-CS/fabric-gm/bccsp"
+	"github.com/hyperledger/fabric/bccsp"
 	"github.com/tjfoc/gmsm/sm2"
 )
 
@@ -58,39 +58,41 @@ func UnmarshalSM2Signature(raw []byte) (*big.Int, *big.Int, error) {
 		return nil, nil, fmt.Errorf("Failed unmashalling signature [%s]", err)
 	}
 
-	// Validate sig
+	if sig.S == nil {
+		return nil, nil, errors.New("Invalid signature. S must be different from nil.")
+	}
+
 	if sig.R == nil {
 		return nil, nil, errors.New("Invalid signature. R must be different from nil.")
 	}
-	if sig.S == nil {
-		return nil, nil, errors.New("Invalid signature. S must be different from nil.")
+	
+	if sig.S.Sign() != 1 {
+		return nil, nil, errors.New("Invalid signature. S must be larger than zero")
 	}
 
 	if sig.R.Sign() != 1 {
 		return nil, nil, errors.New("Invalid signature. R must be larger than zero")
 	}
-	if sig.S.Sign() != 1 {
-		return nil, nil, errors.New("Invalid signature. S must be larger than zero")
-	}
-
+	
 	return sig.R, sig.S, nil
 }
 
-func signGMSM2(k *sm2.PrivateKey, digest []byte, opts bccsp.SignerOpts) (signature []byte, err error) {
+func SM2Sign(k *sm2.PrivateKey, digest []byte, opts bccsp.SignerOpts) (signature []byte, err error) {
 	signature, err = k.Sign(rand.Reader, digest, opts)
 	return
 }
 
-func verifyGMSM2(k *sm2.PublicKey, signature, digest []byte, opts bccsp.SignerOpts) (valid bool, err error) {
+func SM2Verify(k *sm2.PublicKey, signature, digest []byte, opts bccsp.SignerOpts) (valid bool, err error) {
 	valid = k.Verify(digest, signature)
 	return
 }
 
-type gmsm2Signer struct{}
+type SM2Signer struct{}
 
-func (s *gmsm2Signer) Sign(k bccsp.Key, digest []byte, opts bccsp.SignerOpts) (signature []byte, err error) {
-	logger.Infof("bccsp gm gmsm2Signer Sign")
-	return signGMSM2(k.(*gmsm2PrivateKey).privKey, digest, opts)
+
+func (s *SM2Signer) Sign(k bccsp.Key, digest []byte, opts bccsp.SignerOpts) (signature []byte, err error) {
+  logger.Infof("bccsp gm gmsm2Signer Sign")
+	return SM2Sign(k.(*SM2PrivateKey).privKey, digest, opts)
 }
 
 type ecdsaPrivateKeySigner struct{}
@@ -110,21 +112,22 @@ func (s *ecdsaPrivateKeySigner) Sign(k bccsp.Key, digest []byte, opts bccsp.Sign
 		PublicKey: sm2pk,
 	}
 
-	return signGMSM2(&sm2privKey, digest, opts)
+	return SM2Sign(&sm2privKey, digest, opts)
 }
 
-type gmsm2PrivateKeyVerifier struct{}
+type SM2PrivateKeyVerifier struct{}
 
-func (v *gmsm2PrivateKeyVerifier) Verify(k bccsp.Key, signature, digest []byte, opts bccsp.SignerOpts) (valid bool, err error) {
-	logger.Infof("bccsp gm gmsm2PrivateKeyVerifier Verify")
-	return verifyGMSM2(&(k.(*gmsm2PrivateKey).privKey.PublicKey), signature, digest, opts)
+
+func (v *SM2PrivateKeyVerifier) Verify(k bccsp.Key, signature, digest []byte, opts bccsp.SignerOpts) (valid bool, err error) {
+  logger.Infof("bccsp gm gmsm2PrivateKeyVerifier Verify")
+	return SM2Verify(&(k.(*SM2PrivateKey).privKey.PublicKey), signature, digest, opts)
 }
 
-type gmsm2PublicKeyKeyVerifier struct{}
+type SM2PublicKeyKeyVerifier struct{}
 
-func (v *gmsm2PublicKeyKeyVerifier) Verify(k bccsp.Key, signature, digest []byte, opts bccsp.SignerOpts) (valid bool, err error) {
-	logger.Infof("bccsp gm gmsm2PublicKeyKeyVerifier Verify")
-	return verifyGMSM2(k.(*gmsm2PublicKey).pubKey, signature, digest, opts)
+func (v *SM2PublicKeyKeyVerifier) Verify(k bccsp.Key, signature, digest []byte, opts bccsp.SignerOpts) (valid bool, err error) {
+  logger.Infof("bccsp gm gmsm2PublicKeyKeyVerifier Verify")
+	return SM2Verify(k.(*SM2PublicKey).pubKey, signature, digest, opts)
 }
 
 type ecdsaPrivateKeyVerifier struct{}
@@ -137,7 +140,7 @@ func (v *ecdsaPrivateKeyVerifier) Verify(k bccsp.Key, signature, digest []byte, 
 		X:     puk.X,
 		Y:     puk.Y,
 	}
-	return verifyGMSM2(&sm2pk, signature, digest, opts)
+	return SM2Verify(&sm2pk, signature, digest, opts)
 }
 
 type ecdsaPublicKeyKeyVerifier struct{}
@@ -150,7 +153,7 @@ func (v *ecdsaPublicKeyKeyVerifier) Verify(k bccsp.Key, signature, digest []byte
 		X:     puk.X,
 		Y:     puk.Y,
 	}
-	return verifyGMSM2(&sm2pk, signature, digest, opts)
+	return SM2Verify(&sm2pk, signature, digest, opts)
 }
 
 func SignatureToLowS(k *ecdsa.PublicKey, signature []byte) ([]byte, error) {
