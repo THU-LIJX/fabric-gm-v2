@@ -17,10 +17,10 @@ import (
 
 	"github.com/hyperledger/fabric-protos-go/common"
 	"github.com/hyperledger/fabric-protos-go/orderer"
-	"github.com/VoneChain-CS/fabric-gm/common/flogging"
-	"github.com/VoneChain-CS/fabric-gm/common/util"
-	"github.com/VoneChain-CS/fabric-gm/internal/pkg/identity"
-	"github.com/VoneChain-CS/fabric-gm/protoutil"
+	"github.com/hyperledger/fabric/common/flogging"
+	"github.com/hyperledger/fabric/common/util"
+	"github.com/hyperledger/fabric/internal/pkg/identity"
+	"github.com/hyperledger/fabric/protoutil"
 	"github.com/pkg/errors"
 	"google.golang.org/grpc"
 )
@@ -433,7 +433,7 @@ func (p *BlockPuller) seekLastEnvelope() (*common.Envelope, error) {
 		last(),
 		int32(0),
 		uint64(0),
-		util.ComputeGMSM3(p.TLSCert),
+		util.ComputeSM3(p.TLSCert),
 	)
 }
 
@@ -445,7 +445,7 @@ func (p *BlockPuller) seekNextEnvelope(startSeq uint64) (*common.Envelope, error
 		nextSeekInfo(startSeq),
 		int32(0),
 		uint64(0),
-		util.ComputeGMSM3(p.TLSCert),
+		util.ComputeSM3(p.TLSCert),
 	)
 }
 

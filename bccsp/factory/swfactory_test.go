@@ -48,8 +48,8 @@ func TestSWFactoryGet(t *testing.T) {
 
 	opts := &FactoryOpts{
 		SwOpts: &SwOpts{
-			SecLevel:   256,
-			HashFamily: "SHA2",
+			Security:   256,
+			Hash: "SHA2",
 		},
 	}
 	csp, err := f.Get(opts)
@@ -58,8 +58,8 @@ func TestSWFactoryGet(t *testing.T) {
 
 	opts = &FactoryOpts{
 		SwOpts: &SwOpts{
-			SecLevel:     256,
-			HashFamily:   "SHA2",
+			Security:     256,
+			Hash:   "SHA2",
 			FileKeystore: &FileKeystoreOpts{KeyStorePath: os.TempDir()},
 		},
 	}

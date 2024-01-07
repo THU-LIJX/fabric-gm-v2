@@ -24,21 +24,21 @@ type config struct {
 	rsaBitLength  int
 }
 
-func (conf *config) setSecurityLevel(securityLevel int, hashFamily string) (err error) {
-	switch hashFamily {
+func (conf *config) setSecurityLevel(securityLevel int, Hash string) (err error) {
+	switch Hash {
 	case "SHA2":
 		err = conf.setSecurityLevelSHA2(securityLevel)
 	case "SHA3":
 		err = conf.setSecurityLevelSHA3(securityLevel)
 	case "GMSM3":
-		err = conf.setSecurityLevelGMSM3(securityLevel)
+		err = conf.setSecurityLevelSM3(securityLevel)
 	default:
-		err = fmt.Errorf("Hash Family not supported [%s]", hashFamily)
+		err = fmt.Errorf("Hash Family not supported [%s]", Hash)
 	}
 	return
 }
 
-func (conf *config) setSecurityLevelGMSM3(level int) (err error) {
+func (conf *config) setSecurityLevelSM3(level int) (err error) {
 	switch level {
 	case 256:
 		conf.ellipticCurve = elliptic.P256()

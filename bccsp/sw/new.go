@@ -13,7 +13,7 @@ import (
 	"github.com/tjfoc/gmsm/sm3"
 	"reflect"
 
-	"github.com/VoneChain-CS/fabric-gm/bccsp"
+	"github.com/hyperledger/fabric/bccsp"
 	"github.com/pkg/errors"
 	"golang.org/x/crypto/sha3"
 )
@@ -37,12 +37,12 @@ func NewDefaultSecurityLevelWithKeystore(keyStore bccsp.KeyStore) (bccsp.BCCSP, 
 
 // NewWithParams returns a new instance of the software-based BCCSP
 // set at the passed security level, hash family and KeyStore.
-func NewWithParams(securityLevel int, hashFamily string, keyStore bccsp.KeyStore) (bccsp.BCCSP, error) {
+func NewWithParams(securityLevel int, Hash string, keyStore bccsp.KeyStore) (bccsp.BCCSP, error) {
 	// Init config
 	conf := &config{}
-	err := conf.setSecurityLevel(securityLevel, hashFamily)
+	err := conf.setSecurityLevel(securityLevel, Hash)
 	if err != nil {
-		return nil, errors.Wrapf(err, "Failed initializing configuration at [%v,%v]", securityLevel, hashFamily)
+		return nil, errors.Wrapf(err, "Failed initializing configuration at [%v,%v]", securityLevel, Hash)
 	}
 
 	swbccsp, err := New(keyStore)
@@ -55,21 +55,21 @@ func NewWithParams(securityLevel int, hashFamily string, keyStore bccsp.KeyStore
 
 	// Set the Encryptors
 	swbccsp.AddWrapper(reflect.TypeOf(&aesPrivateKey{}), &aescbcpkcs7Encryptor{})
-	swbccsp.AddWrapper(reflect.TypeOf(&gmsm4PrivateKey{}), &gmsm4Decryptor{})
+	swbccsp.AddWrapper(reflect.TypeOf(&SM4PrivateKey{}), &SM4Decryptor{})
 
 	// Set the Decryptors
 	swbccsp.AddWrapper(reflect.TypeOf(&aesPrivateKey{}), &aescbcpkcs7Decryptor{})
-	swbccsp.AddWrapper(reflect.TypeOf(&gmsm4PrivateKey{}), &gmsm4Decryptor{})
+	swbccsp.AddWrapper(reflect.TypeOf(&SM4PrivateKey{}), &SM4Decryptor{})
 
 	// Set the Signers
 	swbccsp.AddWrapper(reflect.TypeOf(&ecdsaPrivateKey{}), &ecdsaSigner{})
-	swbccsp.AddWrapper(reflect.TypeOf(&gmsm2PrivateKey{}), &gmsm2Signer{})
+	swbccsp.AddWrapper(reflect.TypeOf(&SM2PrivateKey{}), &SM2Signer{})
 
 	// Set the Verifiers
 	swbccsp.AddWrapper(reflect.TypeOf(&ecdsaPrivateKey{}), &ecdsaPrivateKeyVerifier{})
 	swbccsp.AddWrapper(reflect.TypeOf(&ecdsaPublicKey{}), &ecdsaPublicKeyKeyVerifier{})
-	swbccsp.AddWrapper(reflect.TypeOf(&gmsm2PrivateKey{}), &gmsm2PrivateKeyVerifier{})
-	swbccsp.AddWrapper(reflect.TypeOf(&gmsm2PublicKey{}), &gmsm2PublicKeyKeyVerifier{})
+	swbccsp.AddWrapper(reflect.TypeOf(&SM2PrivateKey{}), &SM2PrivateKeyVerifier{})
+	swbccsp.AddWrapper(reflect.TypeOf(&SM2PublicKey{}), &SM2PublicKeyKeyVerifier{})
 
 	// Set the Hashers
 	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.SHAOpts{}), &hasher{hash: conf.hashFunction})
@@ -77,7 +77,7 @@ func NewWithParams(securityLevel int, hashFamily string, keyStore bccsp.KeyStore
 	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.SHA384Opts{}), &hasher{hash: sha512.New384})
 	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.SHA3_256Opts{}), &hasher{hash: sha3.New256})
 	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.SHA3_384Opts{}), &hasher{hash: sha3.New384})
-	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.GMSM3Opts{}), &hasher{hash: sm3.New})
+	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.SM3Opts{}), &hasher{hash: sm3.New})
 
 	// Set the key generators
 	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.ECDSAKeyGenOpts{}), &ecdsaKeyGenerator{curve: conf.ellipticCurve})
@@ -87,8 +87,8 @@ func NewWithParams(securityLevel int, hashFamily string, keyStore bccsp.KeyStore
 	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.AES256KeyGenOpts{}), &aesKeyGenerator{length: 32})
 	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.AES192KeyGenOpts{}), &aesKeyGenerator{length: 24})
 	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.AES128KeyGenOpts{}), &aesKeyGenerator{length: 16})
-	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.GMSM2KeyGenOpts{}), &gmsm2KeyGenerator{})
-	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.GMSM4KeyGenOpts{}), &gmsm4KeyGenerator{length: 16})
+	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.SM2KeyGenOpts{}), &gmsm2KeyGenerator{})
+	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.SM4KeyGenOpts{}), &SM4KeyGenerator{length: 16})
 
 	// Set the key deriver
 	swbccsp.AddWrapper(reflect.TypeOf(&ecdsaPrivateKey{}), &ecdsaPrivateKeyKeyDeriver{})
@@ -102,8 +102,8 @@ func NewWithParams(securityLevel int, hashFamily string, keyStore bccsp.KeyStore
 	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.ECDSAPrivateKeyImportOpts{}), &ecdsaPrivateKeyImportOptsKeyImporter{})
 	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.ECDSAGoPublicKeyImportOpts{}), &ecdsaGoPublicKeyImportOptsKeyImporter{})
 	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.X509PublicKeyImportOpts{}), &x509PublicKeyImportOptsKeyImporter{bccsp: swbccsp})
-	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.GMSM2PrivateKeyImportOpts{}), &gmsm2PrivateKeyOptsKeyImporter{})
-	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.GMSM2PublicKeyImportOpts{}), &gmsm2PublicKeyOptsKeyImporter{})
-	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.GMSM4ImportKeyOpts{}), &gmsm4ImportKeyOptsKeyImporter{})
+	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.SM2PrivateKeyImportOpts{}), &SM2PrivateKeyOptsKeyImporter{})
+	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.SM2PublicKeyImportOpts{}), &SM2PublicKeyOptsKeyImporter{})
+	swbccsp.AddWrapper(reflect.TypeOf(&bccsp.SM4ImportKeyOpts{}), &SM4ImportKeyOptsKeyImporter{})
 	return swbccsp, nil
 }

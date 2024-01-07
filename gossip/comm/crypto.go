@@ -9,7 +9,7 @@ package comm
 import (
 	"context"
 
-	"github.com/VoneChain-CS/fabric-gm/common/util"
+	"github.com/hyperledger/fabric/common/util"
 	credentials "github.com/tjfoc/gmtls/gmcredentials"
 	"google.golang.org/grpc/peer"
 )
@@ -18,7 +18,7 @@ func certHashFromRawCert(rawCert []byte) []byte {
 	if len(rawCert) == 0 {
 		return nil
 	}
-	return util.ComputeGMSM3(rawCert)
+	return util.ComputeSM3(rawCert)
 }
 
 // ExtractCertificateHash extracts the hash of the certificate from the stream

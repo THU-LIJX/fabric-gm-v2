@@ -14,8 +14,8 @@ import (
 	"crypto/x509"
 	"crypto/x509/pkix"
 	"encoding/pem"
-	"github.com/VoneChain-CS/fabric-gm/bccsp"
-	"github.com/VoneChain-CS/fabric-gm/bccsp/gm"
+	"github.com/hyperledger/fabric/bccsp"
+	"github.com/hyperledger/fabric/bccsp/gm"
 	"github.com/tjfoc/gmsm/sm2"
 	"io/ioutil"
 	"math/big"
@@ -25,7 +25,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/VoneChain-CS/fabric-gm/internal/cryptogen/csp"
+	"github.com/hyperledger/fabric/internal/cryptogen/csp"
 	"github.com/pkg/errors"
 )
 
@@ -84,7 +84,7 @@ func NewCA(
 	subject.Organization = []string{org}
 	subject.CommonName = name
 	template.Subject = subject
-	templateSm2 := gm.ParseX509Certificate2Sm2(&template)
+	templateSm2 := gm.ParseX509CertificateToSm2(&template)
 	//TODO important
 	templateSm2.SubjectKeyId = computeSKI(priv)
 	sm2PubKey := priv.PublicKey
@@ -162,7 +162,7 @@ func (ca *CA) SignCertificate(
 		}
 	}
 	template.PublicKey = pub
-	templateSm2 := gm.ParseX509Certificate2Sm2(&template)
+	templateSm2 := gm.ParseX509CertificateToSm2(&template)
 	templateSm2.SignatureAlgorithm = sm2.SM2WithSM3
 	cert, err := genCertificateGMSM2(
 		baseDir,

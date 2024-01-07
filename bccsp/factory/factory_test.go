@@ -12,7 +12,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/VoneChain-CS/fabric-gm/bccsp/pkcs11"
+	"github.com/hyperledger/fabric/bccsp/pkcs11"
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/require"
 )
@@ -61,8 +61,8 @@ BCCSP:
 
 	cfgVariations := []*FactoryOpts{
 		{},
-		{ProviderName: "GM"},
-		{ProviderName: "GM", SwOpts: &SwOpts{HashFamily: "GMSM3", SecLevel: 256, Ephemeral: true}},
+		{Default: "GM"},
+		{Default: "GM", SwOpts: &SwOpts{Hash: "GMSM3", Security: 256, Ephemeral: true}},
 		yamlBCCSP,
 	}
 

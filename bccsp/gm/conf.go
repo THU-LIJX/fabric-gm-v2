@@ -30,12 +30,12 @@ type config struct {
 	rsaBitLength  int
 }
 
-func (conf *config) setSecurityLevel(securityLevel int, hashFamily string) (err error) {
-	err = conf.setSecurityLevelGMSM3(securityLevel)
+func (conf *config) setSecurityLevel(securityLevel int, Hash string) (err error) {
+	err = conf.setSecurityLevelSM3(securityLevel)
 	return
 }
 
-func (conf *config) setSecurityLevelGMSM3(level int) (err error) {
+func (conf *config) setSecurityLevelSM3(level int) (err error) {
 	switch level {
 	case 256:
 		conf.ellipticCurve = elliptic.P256()

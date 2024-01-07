@@ -21,43 +21,12 @@ import (
 	"io"
 	"math/big"
 
-	"github.com/VoneChain-CS/fabric-gm/bccsp"
+	"github.com/hyperledger/fabric/bccsp"
 	"github.com/tjfoc/gmsm/sm2"
 )
 
-// //调用SM2接口生成SM2证书
-// func CreateCertificateToMem(template, parent *x509.Certificate,key bccsp.Key) (cert []byte,err error) {
-// 	pk := key.(*gmsm2PrivateKey).privKey
-// 	bigint := getRandBigInt()
-// 	if(template.SerialNumber == nil){
-// 		template.SerialNumber = bigint
-// 	}
-// 	if parent.SerialNumber == nil{
-// 		parent.SerialNumber = bigint
-// 	}
-
-// 	sm2Temcert := ParseX509Certificate2Sm2(template)
-// 	sm2Parcert := ParseX509Certificate2Sm2(parent)
-// 	switch template.PublicKey.(type){
-// 	case sm2.PublicKey:
-// 		cert, err = sm2.CreateCertificateToMem(sm2Temcert,sm2Parcert, template.PublicKey.(*sm2.PublicKey),pk)
-// 		return
-// 	default:
-// 		return nil ,fmt.Errorf("gm certhelper not sm2.PublicKey")
-// 	}
-// }
-
-// //调用SM2接口生成SM2证书请求
-// func CreateCertificateRequestToMem(certificateRequest *x509.CertificateRequest,key bccsp.Key) (csr []byte,err error) {
-// 	pk := key.(*gmsm2PrivateKey).privKey
-// 	sm2Req := ParseX509CertificateRequest2Sm2(certificateRequest)
-// 	csr,err = sm2.CreateCertificateRequestToMem(sm2Req,pk)
-// 	return
-// }
-
-//调用SM2接口生成SM2证书
 func CreateCertificateToMem(template, parent *sm2.Certificate, key bccsp.Key) (cert []byte, err error) {
-	pk := key.(*gmsm2PrivateKey).privKey
+	pk := key.(*SM2PrivateKey).privKey
 
 	pub, a := template.PublicKey.(*sm2.PublicKey)
 	if a {
@@ -74,13 +43,13 @@ func CreateCertificateToMem(template, parent *sm2.Certificate, key bccsp.Key) (c
 
 //调用SM2接口生成SM2证书请求
 func CreateSm2CertificateRequestToMem(certificateRequest *sm2.CertificateRequest, key bccsp.Key) (csr []byte, err error) {
-	pk := key.(*gmsm2PrivateKey).privKey
+	pk := key.(*SM2PrivateKey).privKey
 	csr, err = sm2.CreateCertificateRequestToMem(certificateRequest, pk)
 	return
 }
 
 // X509 证书请求转换 SM2证书请求
-func ParseX509CertificateRequest2Sm2(x509req *x509.CertificateRequest) *sm2.CertificateRequest {
+func ParseX509CertificateRequestToSm2(x509req *x509.CertificateRequest) *sm2.CertificateRequest {
 	sm2req := &sm2.CertificateRequest{
 		Raw:                      x509req.Raw,                      // Complete ASN.1 DER content (CSR, signature algorithm and signature).
 		RawTBSCertificateRequest: x509req.RawTBSCertificateRequest, // Certificate request info part of raw ASN.1 DER content.
@@ -122,7 +91,7 @@ func ParseX509CertificateRequest2Sm2(x509req *x509.CertificateRequest) *sm2.Cert
 }
 
 // X509证书格式转换为 SM2证书格式
-func ParseX509Certificate2Sm2(x509Cert *x509.Certificate) *sm2.Certificate {
+func ParseX509CertificateToSm2(x509Cert *x509.Certificate) *sm2.Certificate {
 	sm2cert := &sm2.Certificate{
 		Raw:                     x509Cert.Raw,
 		RawTBSCertificate:       x509Cert.RawTBSCertificate,

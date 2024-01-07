@@ -43,10 +43,10 @@ type SigningIdentityInfo struct {
 // for the cryptographic algorithms used by the MSP
 // this configuration refers to.
 type CryptoConfig struct {
-	// SignatureHashFamily is a string representing the hash family to be used
+	// SignatureHash is a string representing the hash family to be used
 	// during sign and verify operations.
 	// Allowed values are "SHA2" and "SHA3".
-	SignatureHashFamily string
+	SignatureHash string
 	// IdentityIdentifierHashFunction is a string representing the hash function
 	// to be used during the computation of the identity identifier of an MSP identity.
 	// Allowed values are "SHA256", "SHA384" and "SHA3_256", "SHA3_384".
