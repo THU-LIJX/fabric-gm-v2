@@ -18,7 +18,7 @@ github.com/Microsoft/go-winio
 # github.com/Microsoft/hcsshim v0.8.6
 ## explicit
 github.com/Microsoft/hcsshim/osversion
-# github.com/Shopify/sarama v0.0.0-00010101000000-000000000000 => ./Shopify/sarama
+# github.com/Shopify/sarama v1.27.2 => ./Shopify/sarama
 ## explicit
 github.com/Shopify/sarama
 github.com/Shopify/sarama/mocks
@@ -151,7 +151,7 @@ github.com/hyperledger/fabric-chaincode-go/pkg/statebased
 github.com/hyperledger/fabric-chaincode-go/shim
 github.com/hyperledger/fabric-chaincode-go/shim/internal
 github.com/hyperledger/fabric-chaincode-go/shimtest
-# github.com/hyperledger/fabric-config v0.0.0-00010101000000-000000000000 => ./fabric-config
+# github.com/hyperledger/fabric-config v0.0.9 => ./fabric-config
 ## explicit
 github.com/hyperledger/fabric-config/configtx
 github.com/hyperledger/fabric-config/configtx/internal/policydsl
@@ -478,9 +478,7 @@ gopkg.in/tomb.v1
 ## explicit
 gopkg.in/yaml.v2
 # golang.org/x/sys => golang.org/x/sys v0.0.0-20190920190810-ef0ce1748380
-# github.com/Shopify/sarama => ./Shopify/sarama
 # github.com/hyperledger/fabric-chaincode-go => ./fabric-chaincode-go
-# github.com/hyperledger/fabric-config => ./fabric-config
 # github.com/spf13/cast => ./spf13/cast
 # github.com/spf13/cobra => ./spf13/cobra
 # github.com/spf13/jwalterweatherman => ./spf13/jwalterweatherman

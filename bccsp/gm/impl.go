@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-	 http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -126,7 +126,7 @@ func New(securityLevel int, hashFamily string, keyStore bccsp.KeyStore) (bccsp.B
 	return impl, nil
 }
 
-//定义国密算法结构体
+// 定义国密算法结构体
 type impl struct {
 	conf          *config                    //bccsp实例的配置
 	ks            bccsp.KeyStore             //key存储系统对象，存储和获取Key对象
@@ -140,8 +140,9 @@ type impl struct {
 	keyImporters  map[reflect.Type]KeyImporter
 }
 
-//根据key生成选项opts生成一个key
+// 根据key生成选项opts生成一个key
 func (csp *impl) KeyGen(opts bccsp.KeyGenOpts) (k bccsp.Key, err error) {
+	logger.Infof("bccsp gm KeyGen called")
 	// Validate arguments
 	if opts == nil {
 		return nil, errors.New("Invalid Opts parameter. It must not be nil.")
@@ -169,8 +170,9 @@ func (csp *impl) KeyGen(opts bccsp.KeyGenOpts) (k bccsp.Key, err error) {
 	return k, nil
 }
 
-//根据key获取选项opts从k中重新获取一个key
+// 根据key获取选项opts从k中重新获取一个key
 func (csp *impl) KeyDeriv(k bccsp.Key, opts bccsp.KeyDerivOpts) (dk bccsp.Key, err error) {
+	logger.Infof("bccsp gm KeyDeriv called")
 	// Validate arguments
 	if k == nil {
 		return nil, errors.New("Invalid Key. It must not be nil.")
@@ -201,8 +203,9 @@ func (csp *impl) KeyDeriv(k bccsp.Key, opts bccsp.KeyDerivOpts) (dk bccsp.Key, e
 	return k, nil
 }
 
-//根据key导入选项opts从一个key原始的数据中导入一个key
+// 根据key导入选项opts从一个key原始的数据中导入一个key
 func (csp *impl) KeyImport(raw interface{}, opts bccsp.KeyImportOpts) (k bccsp.Key, err error) {
+	logger.Infof("bccsp gm KeyImport called")
 	// Validate arguments
 	if raw == nil {
 		return nil, errors.New("Invalid raw. It must not be nil.")
@@ -233,8 +236,9 @@ func (csp *impl) KeyImport(raw interface{}, opts bccsp.KeyImportOpts) (k bccsp.K
 	return
 }
 
-//根据SKI返回与该接口实例有联系的key
+// 根据SKI返回与该接口实例有联系的key
 func (csp *impl) GetKey(ski []byte) (k bccsp.Key, err error) {
+	logger.Infof("bccsp gm GetKey called")
 	k, err = csp.ks.GetKey(ski)
 	if err != nil {
 		return nil, errors.Wrapf(err, "Failed getting key for SKI [%v]", ski)
@@ -243,8 +247,9 @@ func (csp *impl) GetKey(ski []byte) (k bccsp.Key, err error) {
 	return
 }
 
-//根据哈希选项opts哈希一个消息msg，如果opts为空，则使用默认选项
+// 根据哈希选项opts哈希一个消息msg，如果opts为空，则使用默认选项
 func (csp *impl) Hash(msg []byte, opts bccsp.HashOpts) (digest []byte, err error) {
+	logger.Infof("bccsp gm Hash called")
 	// Validate arguments
 	if opts == nil {
 		return nil, errors.New("Invalid opts. It must not be nil.")
@@ -268,8 +273,9 @@ func (csp *impl) Hash(msg []byte, opts bccsp.HashOpts) (digest []byte, err error
 	return
 }
 
-//根据哈希选项opts获取hash.Hash实例，如果opts为空，则使用默认选项
+// 根据哈希选项opts获取hash.Hash实例，如果opts为空，则使用默认选项
 func (csp *impl) GetHash(opts bccsp.HashOpts) (h hash.Hash, err error) {
+	logger.Infof("bccsp gm GetHash called")
 	// Validate arguments
 	if opts == nil {
 		return nil, errors.New("Invalid opts. It must not be nil.")
@@ -288,8 +294,10 @@ func (csp *impl) GetHash(opts bccsp.HashOpts) (h hash.Hash, err error) {
 	return
 }
 
+
 //根据签名者选项opts，使用k对digest进行签名
 func (csp *impl) Sign(k bccsp.Key, digest []byte, opts bccsp.SignerOpts) (signature []byte, err error) {
+	logger.Infof("bccsp gm Sign called")
 	// Validate arguments
 	if k == nil {
 		return nil, errors.New("Invalid Key. It must not be nil.")
@@ -311,8 +319,9 @@ func (csp *impl) Sign(k bccsp.Key, digest []byte, opts bccsp.SignerOpts) (signat
 	return
 }
 
-//根据鉴定者选项opts，通过对比k和digest，鉴定签名
+// 根据鉴定者选项opts，通过对比k和digest，鉴定签名
 func (csp *impl) Verify(k bccsp.Key, signature, digest []byte, opts bccsp.SignerOpts) (valid bool, err error) {
+	logger.Infof("bccsp gm Verify called")
 	// Validate arguments
 	if k == nil {
 		return false, errors.New("Invalid Key. It must not be nil.")
@@ -337,8 +346,9 @@ func (csp *impl) Verify(k bccsp.Key, signature, digest []byte, opts bccsp.Signer
 	return
 }
 
-//根据加密者选项opts，使用k加密plaintext
+// 根据加密者选项opts，使用k加密plaintext
 func (csp *impl) Encrypt(k bccsp.Key, plaintext []byte, opts bccsp.EncrypterOpts) (ciphertext []byte, err error) {
+	logger.Infof("bccsp gm Encrypt called")
 	// Validate arguments
 	if k == nil {
 		return nil, errors.New("Invalid Key. It must not be nil.")
@@ -352,8 +362,9 @@ func (csp *impl) Encrypt(k bccsp.Key, plaintext []byte, opts bccsp.EncrypterOpts
 	return encryptor.Encrypt(k, plaintext, opts)
 }
 
-//根据解密者选项opts，使用k对ciphertext进行解密
+// 根据解密者选项opts，使用k对ciphertext进行解密
 func (csp *impl) Decrypt(k bccsp.Key, ciphertext []byte, opts bccsp.DecrypterOpts) (plaintext []byte, err error) {
+	logger.Infof("bccsp gm Decrypt called")
 	// Validate arguments
 	if k == nil {
 		return nil, errors.New("Invalid Key. It must not be nil.")

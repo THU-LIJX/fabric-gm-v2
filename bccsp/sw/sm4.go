@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-	 http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -68,7 +68,7 @@ type SM4Encryptor struct{}
 
 //实现 Encryptor 接口
 func (*SM4Encryptor) Encrypt(k bccsp.Key, plaintext []byte, opts bccsp.EncrypterOpts) (ciphertext []byte, err error) {
-
+  logger.Infof("bccsp sw gmsm4Encryptor Encrypt")
 	return SM4Encrypt(k.(*SM4PrivateKey).privKey, plaintext)
 	//return AESCBCPKCS7Encrypt(k.(*sm4PrivateKey).privKey, plaintext)
 
@@ -82,6 +82,7 @@ type SM4Decryptor struct{}
 
 //实现 Decryptor 接口
 func (*SM4Decryptor) Decrypt(k bccsp.Key, ciphertext []byte, opts bccsp.DecrypterOpts) (plaintext []byte, err error) {
+  logger.Infof("bccsp sw gmsm4Encryptor Decrypt")
 
 	return SM4Decrypt(k.(*SM4PrivateKey).privKey, ciphertext)
 	// var dc = make([]byte, 16)

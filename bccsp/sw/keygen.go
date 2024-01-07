@@ -30,6 +30,7 @@ type ecdsaKeyGenerator struct {
 }
 
 func (kg *ecdsaKeyGenerator) KeyGen(opts bccsp.KeyGenOpts) (bccsp.Key, error) {
+	logger.Infof("bccsp sw ecdsaKeyGenerator KeyGen")
 	privKey, err := ecdsa.GenerateKey(kg.curve, rand.Reader)
 	if err != nil {
 		return nil, fmt.Errorf("Failed generating ECDSA key for [%v]: [%s]", kg.curve, err)
@@ -42,6 +43,7 @@ type SM2KeyGenerator struct {
 }
 
 func (gm *SM2KeyGenerator) KeyGen(opts bccsp.KeyGenOpts) (bccsp.Key, error) {
+  logger.Infof("bccsp sw gmsm2KeyGenerator KeyGen")
 	privKey, err := sm2.GenerateKey()
 	if err != nil {
 		return nil, fmt.Errorf("Failed generating SM2 key for [%v]: [%s]", err)
@@ -54,6 +56,7 @@ type SM4KeyGenerator struct {
 }
 
 func (gm *SM4KeyGenerator) KeyGen(opts bccsp.KeyGenOpts) (bccsp.Key, error) {
+  logger.Infof("bccsp sw gmsm4KeyGenerator KeyGen")
 	lowLevelKey, err := GetRandomBytes(int(gm.length))
 	if err != nil {
 		return nil, fmt.Errorf("Failed generating SM4 key for [%v]: [%s]", err)
@@ -66,6 +69,7 @@ type aesKeyGenerator struct {
 }
 
 func (kg *aesKeyGenerator) KeyGen(opts bccsp.KeyGenOpts) (bccsp.Key, error) {
+	logger.Infof("bccsp sw aesKeyGenerator KeyGen")
 	lowLevelKey, err := GetRandomBytes(int(kg.length))
 	if err != nil {
 		return nil, fmt.Errorf("Failed generating AES %d key [%s]", kg.length, err)
