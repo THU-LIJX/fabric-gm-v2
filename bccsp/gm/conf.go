@@ -30,7 +30,7 @@ type config struct {
 	rsaBitLength  int
 }
 
-func (conf *config) setSecurityLevel(securityLevel int, hashFamily string) (err error) {
+func (conf *config) setSecurityLevel(securityLevel int, Hash string) (err error) {
 	err = conf.SM3setSecurityLevel(securityLevel)
 	return
 }

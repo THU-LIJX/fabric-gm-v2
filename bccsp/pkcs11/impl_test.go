@@ -44,7 +44,7 @@ var (
 
 type testConfig struct {
 	securityLevel int
-	hashFamily    string
+	Hash    string
 	softVerify    bool
 	immutable     bool
 }
@@ -93,8 +93,8 @@ func testMain(m *testing.M) int {
 	for _, config := range tests {
 		currentTestConfig = config
 
-		opts.HashFamily = config.hashFamily
-		opts.SecLevel = config.securityLevel
+		opts.Hash = config.Hash
+		opts.Security = config.securityLevel
 		opts.SoftVerify = config.softVerify
 		opts.Immutable = config.immutable
 		fmt.Printf("Immutable = [%v]\n", opts.Immutable)
@@ -115,8 +115,8 @@ func testMain(m *testing.M) int {
 
 func TestNew(t *testing.T) {
 	opts := PKCS11Opts{
-		HashFamily: "SHA2",
-		SecLevel:   256,
+		Hash: "SHA2",
+		Security:   256,
 		SoftVerify: false,
 		Library:    "lib",
 		Label:      "ForFabric",
@@ -176,8 +176,8 @@ func TestInvalidNewParameter(t *testing.T) {
 		SoftVerify: true,
 	}
 
-	opts.HashFamily = "SHA2"
-	opts.SecLevel = 0
+	opts.Hash = "SHA2"
+	opts.Security = 0
 	r, err := New(opts, currentKS)
 	if err == nil {
 		t.Fatal("Error should be different from nil in this case")
@@ -186,8 +186,8 @@ func TestInvalidNewParameter(t *testing.T) {
 		t.Fatal("Return value should be equal to nil in this case")
 	}
 
-	opts.HashFamily = "SHA8"
-	opts.SecLevel = 256
+	opts.Hash = "SHA8"
+	opts.Security = 256
 	r, err = New(opts, currentKS)
 	if err == nil {
 		t.Fatal("Error should be different from nil in this case")
@@ -196,8 +196,8 @@ func TestInvalidNewParameter(t *testing.T) {
 		t.Fatal("Return value should be equal to nil in this case")
 	}
 
-	opts.HashFamily = "SHA2"
-	opts.SecLevel = 256
+	opts.Hash = "SHA2"
+	opts.Security = 256
 	r, err = New(opts, nil)
 	if err == nil {
 		t.Fatal("Error should be different from nil in this case")
@@ -206,8 +206,8 @@ func TestInvalidNewParameter(t *testing.T) {
 		t.Fatal("Return value should be equal to nil in this case")
 	}
 
-	opts.HashFamily = "SHA3"
-	opts.SecLevel = 0
+	opts.Hash = "SHA3"
+	opts.Security = 0
 	r, err = New(opts, nil)
 	if err == nil {
 		t.Fatal("Error should be different from nil in this case")
@@ -1283,7 +1283,7 @@ func TestSHA(t *testing.T) {
 		}
 
 		var h hash.Hash
-		switch currentTestConfig.hashFamily {
+		switch currentTestConfig.Hash {
 		case "SHA2":
 			switch currentTestConfig.securityLevel {
 			case 256:
@@ -1303,7 +1303,7 @@ func TestSHA(t *testing.T) {
 				t.Fatalf("Invalid security level [%d]", currentTestConfig.securityLevel)
 			}
 		default:
-			t.Fatalf("Invalid hash family [%s]", currentTestConfig.hashFamily)
+			t.Fatalf("Invalid hash family [%s]", currentTestConfig.Hash)
 		}
 
 		h.Write(b)
@@ -1315,7 +1315,7 @@ func TestSHA(t *testing.T) {
 }
 
 func getCryptoHashIndex(t *testing.T) crypto.Hash {
-	switch currentTestConfig.hashFamily {
+	switch currentTestConfig.Hash {
 	case "SHA2":
 		switch currentTestConfig.securityLevel {
 		case 256:
@@ -1335,7 +1335,7 @@ func getCryptoHashIndex(t *testing.T) crypto.Hash {
 			t.Fatalf("Invalid security level [%d]", currentTestConfig.securityLevel)
 		}
 	default:
-		t.Fatalf("Invalid hash family [%s]", currentTestConfig.hashFamily)
+		t.Fatalf("Invalid hash family [%s]", currentTestConfig.Hash)
 	}
 
 	return crypto.SHA3_256

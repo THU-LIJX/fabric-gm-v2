@@ -118,7 +118,7 @@ func TestMSPSetupNoCryptoConf(t *testing.T) {
 	// where the hash function to be used to compute
 	// signatures is unspecified - a sane default
 	// should be picked
-	mspconf.CryptoConfig.SignatureHashFamily = ""
+	mspconf.CryptoConfig.SignatureHash = ""
 	b, err = proto.Marshal(mspconf)
 	assert.NoError(t, err)
 	conf.Config = b
@@ -545,13 +545,13 @@ func TestSignAndVerifyFailures(t *testing.T) {
 		return
 	}
 
-	hash := id.(*signingidentity).msp.cryptoConfig.SignatureHashFamily
-	id.(*signingidentity).msp.cryptoConfig.SignatureHashFamily = "barf"
+	hash := id.(*signingidentity).msp.cryptoConfig.SignatureHash
+	id.(*signingidentity).msp.cryptoConfig.SignatureHash = "barf"
 
 	sig, err := id.Sign(msg)
 	assert.Error(t, err)
 
-	id.(*signingidentity).msp.cryptoConfig.SignatureHashFamily = hash
+	id.(*signingidentity).msp.cryptoConfig.SignatureHash = hash
 
 	sig, err = id.Sign(msg)
 	if err != nil {
@@ -559,12 +559,12 @@ func TestSignAndVerifyFailures(t *testing.T) {
 		return
 	}
 
-	id.(*signingidentity).msp.cryptoConfig.SignatureHashFamily = "barf"
+	id.(*signingidentity).msp.cryptoConfig.SignatureHash = "barf"
 
 	err = id.Verify(msg, sig)
 	assert.Error(t, err)
 
-	id.(*signingidentity).msp.cryptoConfig.SignatureHashFamily = hash
+	id.(*signingidentity).msp.cryptoConfig.SignatureHash = hash
 }
 
 func TestSignAndVerifyOtherHash(t *testing.T) {
@@ -574,8 +574,8 @@ func TestSignAndVerifyOtherHash(t *testing.T) {
 		return
 	}
 
-	hash := id.(*signingidentity).msp.cryptoConfig.SignatureHashFamily
-	id.(*signingidentity).msp.cryptoConfig.SignatureHashFamily = bccsp.SHA3
+	hash := id.(*signingidentity).msp.cryptoConfig.SignatureHash
+	id.(*signingidentity).msp.cryptoConfig.SignatureHash = bccsp.SHA3
 
 	msg := []byte("foo")
 	sig, err := id.Sign(msg)
@@ -587,7 +587,7 @@ func TestSignAndVerifyOtherHash(t *testing.T) {
 	err = id.Verify(msg, sig)
 	assert.NoError(t, err)
 
-	id.(*signingidentity).msp.cryptoConfig.SignatureHashFamily = hash
+	id.(*signingidentity).msp.cryptoConfig.SignatureHash = hash
 }
 
 func TestSignAndVerify_longMessage(t *testing.T) {

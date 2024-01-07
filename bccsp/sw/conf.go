@@ -24,8 +24,8 @@ type config struct {
 	rsaBitLength  int
 }
 
-func (conf *config) setSecurityLevel(securityLevel int, hashFamily string) (err error) {
-	switch hashFamily {
+func (conf *config) setSecurityLevel(securityLevel int, Hash string) (err error) {
+	switch Hash {
 	case "SHA2":
 		err = conf.setSecurityLevelSHA2(securityLevel)
 	case "SHA3":
@@ -33,7 +33,7 @@ func (conf *config) setSecurityLevel(securityLevel int, hashFamily string) (err 
 	case "GMSM3":
 		err = conf.SM3setSecurityLevel(securityLevel)
 	default:
-		err = fmt.Errorf("Hash Family not supported [%s]", hashFamily)
+		err = fmt.Errorf("Hash Family not supported [%s]", Hash)
 	}
 	return
 }

@@ -50,13 +50,13 @@ func NewDefaultSecurityLevelWithKeystore(keyStore bccsp.KeyStore) (bccsp.BCCSP, 
 }
 
 // New 实例化 返回支持国密算法的 bccsp.BCCSP
-func New(securityLevel int, hashFamily string, keyStore bccsp.KeyStore) (bccsp.BCCSP, error) {
+func New(securityLevel int, Hash string, keyStore bccsp.KeyStore) (bccsp.BCCSP, error) {
 
 	// Init config
 	conf := &config{}
-	err := conf.setSecurityLevel(securityLevel, hashFamily)
+	err := conf.setSecurityLevel(securityLevel, Hash)
 	if err != nil {
-		return nil, errors.Wrapf(err, "Failed initializing configuration at [%v,%v]", securityLevel, hashFamily)
+		return nil, errors.Wrapf(err, "Failed initializing configuration at [%v,%v]", securityLevel, Hash)
 	}
 
 	// Check KeyStore

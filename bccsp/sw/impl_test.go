@@ -42,7 +42,7 @@ var (
 
 type testConfig struct {
 	securityLevel int
-	hashFamily    string
+	Hash    string
 }
 
 func (tc testConfig) Provider(t *testing.T) (bccsp.BCCSP, bccsp.KeyStore, func()) {
@@ -50,7 +50,7 @@ func (tc testConfig) Provider(t *testing.T) (bccsp.BCCSP, bccsp.KeyStore, func()
 	assert.NoError(t, err)
 	ks, err := NewFileBasedKeyStore(nil, td, false)
 	assert.NoError(t, err)
-	p, err := NewWithParams(tc.securityLevel, tc.hashFamily, ks)
+	p, err := NewWithParams(tc.securityLevel, tc.Hash, ks)
 	assert.NoError(t, err)
 	return p, ks, func() { os.RemoveAll(td) }
 }
@@ -79,7 +79,7 @@ func TestMain(m *testing.M) {
 		currentTestConfig = config
 		code = m.Run()
 		if code != 0 {
-			fmt.Printf("Failed testing at [%d, %s]", config.securityLevel, config.hashFamily)
+			fmt.Printf("Failed testing at [%d, %s]", config.securityLevel, config.Hash)
 			return
 		}
 	}
@@ -1308,7 +1308,7 @@ func TestSHA(t *testing.T) {
 		}
 
 		var h hash.Hash
-		switch currentTestConfig.hashFamily {
+		switch currentTestConfig.Hash {
 		case "SHA2":
 			switch currentTestConfig.securityLevel {
 			case 256:
@@ -1328,7 +1328,7 @@ func TestSHA(t *testing.T) {
 				t.Fatalf("Invalid security level [%d]", currentTestConfig.securityLevel)
 			}
 		default:
-			t.Fatalf("Invalid hash family [%s]", currentTestConfig.hashFamily)
+			t.Fatalf("Invalid hash family [%s]", currentTestConfig.Hash)
 		}
 
 		h.Write(b)
@@ -1372,7 +1372,7 @@ func TestAddWrapper(t *testing.T) {
 }
 
 func getCryptoHashIndex(t *testing.T) crypto.Hash {
-	switch currentTestConfig.hashFamily {
+	switch currentTestConfig.Hash {
 	case "SHA2":
 		switch currentTestConfig.securityLevel {
 		case 256:
@@ -1392,7 +1392,7 @@ func getCryptoHashIndex(t *testing.T) crypto.Hash {
 			t.Fatalf("Invalid security level [%d]", currentTestConfig.securityLevel)
 		}
 	default:
-		t.Fatalf("Invalid hash family [%s]", currentTestConfig.hashFamily)
+		t.Fatalf("Invalid hash family [%s]", currentTestConfig.Hash)
 	}
 
 	return crypto.SHA3_256

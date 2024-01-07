@@ -84,15 +84,15 @@ func (msp *bccspmsp) setupCrypto(conf *m.FabricMSPConfig) error {
 		// Move to defaults
 		/*mspLogger.Debugf("msp.cryptoConfig----,%v", msp.cryptoConfig)*/
 		msp.cryptoConfig = &m.FabricCryptoConfig{
-			SignatureHashFamily:            bccsp.GMSM3,
+			SignatureHash:            bccsp.GMSM3,
 			IdentityIdentifierHashFunction: bccsp.SHA256,
 		}
 		mspLogger.Debugf("CryptoConfig was nil. Move to defaults.")
 	}
-	/*mspLogger.Debugf("msp.cryptoConfig.SignatureHashFamily----,%v", msp.cryptoConfig.SignatureHashFamily)*/
-	if msp.cryptoConfig.SignatureHashFamily == "" {
-		msp.cryptoConfig.SignatureHashFamily = bccsp.GMSM3
-		mspLogger.Debugf("CryptoConfig.SignatureHashFamily was nil. Move to defaults.")
+	/*mspLogger.Debugf("msp.cryptoConfig.SignatureHash----,%v", msp.cryptoConfig.SignatureHash)*/
+	if msp.cryptoConfig.SignatureHash == "" {
+		msp.cryptoConfig.SignatureHash = bccsp.GMSM3
+		mspLogger.Debugf("CryptoConfig.SignatureHash was nil. Move to defaults.")
 	}
 	if msp.cryptoConfig.IdentityIdentifierHashFunction == "" {
 		msp.cryptoConfig.IdentityIdentifierHashFunction = bccsp.SHA256

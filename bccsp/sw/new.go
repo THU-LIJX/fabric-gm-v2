@@ -37,12 +37,12 @@ func NewDefaultSecurityLevelWithKeystore(keyStore bccsp.KeyStore) (bccsp.BCCSP, 
 
 // NewWithParams returns a new instance of the software-based BCCSP
 // set at the passed security level, hash family and KeyStore.
-func NewWithParams(securityLevel int, hashFamily string, keyStore bccsp.KeyStore) (bccsp.BCCSP, error) {
+func NewWithParams(securityLevel int, Hash string, keyStore bccsp.KeyStore) (bccsp.BCCSP, error) {
 	// Init config
 	conf := &config{}
-	err := conf.setSecurityLevel(securityLevel, hashFamily)
+	err := conf.setSecurityLevel(securityLevel, Hash)
 	if err != nil {
-		return nil, errors.Wrapf(err, "Failed initializing configuration at [%v,%v]", securityLevel, hashFamily)
+		return nil, errors.Wrapf(err, "Failed initializing configuration at [%v,%v]", securityLevel, Hash)
 	}
 
 	swbccsp, err := New(keyStore)

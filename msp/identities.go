@@ -171,7 +171,7 @@ func (id *identity) Verify(msg []byte, sig []byte) error {
 	// mspIdentityLogger.Infof("Verifying signature")
 
 	// Compute Hash
-	hashOpt, err := id.getHashOpt(id.msp.cryptoConfig.SignatureHashFamily)
+	hashOpt, err := id.getHashOpt(id.msp.cryptoConfig.SignatureHash)
 	if err != nil {
 		return errors.WithMessage(err, "failed getting hash function options")
 	}
@@ -213,8 +213,8 @@ func (id *identity) Serialize() ([]byte, error) {
 	return idBytes, nil
 }
 
-func (id *identity) getHashOpt(hashFamily string) (bccsp.HashOpts, error) {
-	switch hashFamily {
+func (id *identity) getHashOpt(Hash string) (bccsp.HashOpts, error) {
+	switch Hash {
 	case bccsp.SHA2:
 		return bccsp.GetHashOpt(bccsp.SHA256)
 	case bccsp.SHA3:
@@ -222,7 +222,7 @@ func (id *identity) getHashOpt(hashFamily string) (bccsp.HashOpts, error) {
 	case bccsp.GMSM3:
 		return bccsp.GetHashOpt(bccsp.GMSM3)
 	}
-	return nil, errors.Errorf("hash familiy not recognized [%s]", hashFamily)
+	return nil, errors.Errorf("hash familiy not recognized [%s]", Hash)
 }
 
 type signingidentity struct {
@@ -255,7 +255,7 @@ func (id *signingidentity) Sign(msg []byte) ([]byte, error) {
 	//mspIdentityLogger.Infof("Signing message")
 
 	// Compute Hash
-	hashOpt, err := id.getHashOpt(id.msp.cryptoConfig.SignatureHashFamily)
+	hashOpt, err := id.getHashOpt(id.msp.cryptoConfig.SignatureHash)
 	if err != nil {
 		return nil, errors.WithMessage(err, "failed getting hash function options")
 	}

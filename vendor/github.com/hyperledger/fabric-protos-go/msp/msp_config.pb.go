@@ -236,10 +236,10 @@ func (m *FabricMSPConfig) GetFabricNodeOus() *FabricNodeOUs {
 // for the cryptographic algorithms used by the MSP
 // this configuration refers to
 type FabricCryptoConfig struct {
-	// SignatureHashFamily is a string representing the hash family to be used
+	// SignatureHash is a string representing the hash family to be used
 	// during sign and verify operations.
 	// Allowed values are "SHA2" and "SHA3".
-	SignatureHashFamily string `protobuf:"bytes,1,opt,name=signature_hash_family,json=signatureHashFamily,proto3" json:"signature_hash_family,omitempty"`
+	SignatureHash string `protobuf:"bytes,1,opt,name=signature_hash_family,json=signatureHash,proto3" json:"signature_hash_family,omitempty"`
 	// IdentityIdentifierHashFunction is a string representing the hash function
 	// to be used during the computation of the identity identifier of an MSP identity.
 	// Allowed values are "SHA256", "SHA384" and "SHA3_256", "SHA3_384".
@@ -274,9 +274,9 @@ func (m *FabricCryptoConfig) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_FabricCryptoConfig proto.InternalMessageInfo
 
-func (m *FabricCryptoConfig) GetSignatureHashFamily() string {
+func (m *FabricCryptoConfig) GetSignatureHash() string {
 	if m != nil {
-		return m.SignatureHashFamily
+		return m.SignatureHash
 	}
 	return ""
 }

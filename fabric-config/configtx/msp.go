@@ -250,7 +250,7 @@ func getMSPConfig(configGroup *cb.ConfigGroup) (MSP, error) {
 		RevocationList:                revocationList,
 		OrganizationalUnitIdentifiers: ouIdentifiers,
 		CryptoConfig: membership.CryptoConfig{
-			SignatureHashFamily:            fabricMSPConfig.CryptoConfig.SignatureHashFamily,
+			SignatureHash:            fabricMSPConfig.CryptoConfig.SignatureHash,
 			IdentityIdentifierHashFunction: fabricMSPConfig.CryptoConfig.IdentityIdentifierHashFunction,
 		},
 		TLSRootCerts:         tlsRootCerts,
@@ -387,7 +387,7 @@ func (m *MSP) toProto() (*mb.FabricMSPConfig, error) {
 		RevocationList:                revocationList,
 		OrganizationalUnitIdentifiers: ouIdentifiers,
 		CryptoConfig: &mb.FabricCryptoConfig{
-			SignatureHashFamily:            m.CryptoConfig.SignatureHashFamily,
+			SignatureHash:            m.CryptoConfig.SignatureHash,
 			IdentityIdentifierHashFunction: m.CryptoConfig.IdentityIdentifierHashFunction,
 		},
 		TlsRootCerts:         buildPemEncodedCertListFromX509(m.TLSRootCerts),

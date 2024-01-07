@@ -22,14 +22,14 @@ type config struct {
 	aesBitLength  int
 }
 
-func (conf *config) setSecurityLevel(securityLevel int, hashFamily string) (err error) {
-	switch hashFamily {
+func (conf *config) setSecurityLevel(securityLevel int, Hash string) (err error) {
+	switch Hash {
 	case "SHA2":
 		err = conf.setSecurityLevelSHA2(securityLevel)
 	case "SHA3":
 		err = conf.setSecurityLevelSHA3(securityLevel)
 	default:
-		err = fmt.Errorf("Hash Family not supported [%s]", hashFamily)
+		err = fmt.Errorf("Hash Family not supported [%s]", Hash)
 	}
 	return
 }
@@ -69,8 +69,8 @@ func (conf *config) setSecurityLevelSHA3(level int) (err error) {
 // PKCS11Opts contains options for the P11Factory
 type PKCS11Opts struct {
 	// Default algorithms when not specified (Deprecated?)
-	SecLevel   int    `mapstructure:"security" json:"security"`
-	HashFamily string `mapstructure:"hash" json:"hash"`
+	Security   int    `mapstructure:"security" json:"security"`
+	Hash string `mapstructure:"hash" json:"hash"`
 
 	// Keystore options
 	Ephemeral bool `mapstructure:"tempkeys,omitempty" json:"tempkeys,omitempty"`
