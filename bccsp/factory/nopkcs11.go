@@ -19,7 +19,7 @@ const pkcs11Enabled = false
 // FactoryOpts holds configuration information used to initialize factory implementations
 type FactoryOpts struct {
 	Default string  `mapstructure:"default" json:"default" yaml:"Default"`
-	SwOpts       *SwOpts `mapstructure:"SW,omitempty" json:"SW,omitempty" yaml:"SwOpts"`
+	SwOpts  *SwOpts `mapstructure:"SW,omitempty" json:"SW,omitempty" yaml:"SwOpts"`
 }
 
 // InitFactories must be called before using factory interfaces
@@ -49,8 +49,8 @@ func initFactories(config *FactoryOpts) error {
 	}
 
 	// Software-Based BCCSP
-	if config.ProviderName == "SW" && config.SwOpts != nil {
-		logger.Infof("InitFactories -> %s", config.ProviderName)
+	if config.Default == "SW" && config.SwOpts != nil {
+		logger.Infof("InitFactories -> %s", config.Default)
 		f := &GMFactory{}
 		var err error
 		defaultBCCSP, err = initBCCSP(f, config)
@@ -59,8 +59,8 @@ func initFactories(config *FactoryOpts) error {
 		}
 	}
 	// Software-Based BCCSP
-	if config.ProviderName == "GM" && config.SwOpts != nil {
-		logger.Infof("InitFactories -> %s", config.ProviderName)
+	if config.Default == "GM" && config.SwOpts != nil {
+		logger.Infof("InitFactories -> %s", config.Default)
 		f := &GMFactory{}
 		var err error
 		defaultBCCSP, err = initBCCSP(f, config)
@@ -78,7 +78,7 @@ func initFactories(config *FactoryOpts) error {
 
 // GetBCCSPFromOpts returns a BCCSP created according to the options passed in input.
 func GetBCCSPFromOpts(config *FactoryOpts) (bccsp.BCCSP, error) {
-	logger.Infof("GetBCCSPFromOpts -> %s", config.ProviderName)
+	logger.Infof("GetBCCSPFromOpts -> %s", config.Default)
 	var f BCCSPFactory
 	switch config.Default {
 	case "GM":
