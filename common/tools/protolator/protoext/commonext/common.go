@@ -10,9 +10,9 @@ import (
 	"fmt"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric-protos-go/common"
-	"github.com/hyperledger/fabric-protos-go/msp"
-	"github.com/hyperledger/fabric-protos-go/peer"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/msp"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 )
 
 type Envelope struct{ *common.Envelope }

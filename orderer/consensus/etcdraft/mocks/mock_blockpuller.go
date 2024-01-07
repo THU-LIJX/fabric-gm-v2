@@ -4,8 +4,8 @@ package mocks
 import (
 	"sync"
 
-	"github.com/hyperledger/fabric-protos-go/common"
-	"github.com/hyperledger/fabric/orderer/consensus/etcdraft"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	"github.com/VoneChain-CS/fabric-gm/orderer/consensus/etcdraft"
 )
 
 type FakeBlockPuller struct {

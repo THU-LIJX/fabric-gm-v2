@@ -7,8 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package blockledger
 
 import (
-	cb "github.com/hyperledger/fabric-protos-go/common"
-	ab "github.com/hyperledger/fabric-protos-go/orderer"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	ab "github.com/VoneChain-CS/fabric-gm-protos-go/orderer"
 )
 
 // Factory retrieves or creates new ledgers by channelID

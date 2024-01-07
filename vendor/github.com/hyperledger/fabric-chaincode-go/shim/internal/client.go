@@ -8,7 +8,7 @@ import (
 	tls "github.com/tjfoc/gmtls"
 	"time"
 
-	peerpb "github.com/hyperledger/fabric-protos-go/peer"
+	peerpb "github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 	"google.golang.org/grpc"
 	credentials "github.com/tjfoc/gmtls/gmcredentials"
 	"google.golang.org/grpc/keepalive"

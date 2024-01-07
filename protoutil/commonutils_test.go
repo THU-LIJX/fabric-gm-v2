@@ -12,10 +12,10 @@ import (
 	"testing"
 
 	"github.com/golang/protobuf/proto"
-	cb "github.com/hyperledger/fabric-protos-go/common"
-	pb "github.com/hyperledger/fabric-protos-go/peer"
-	"github.com/hyperledger/fabric/common/crypto"
-	"github.com/hyperledger/fabric/protoutil/fakes"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	pb "github.com/VoneChain-CS/fabric-gm-protos-go/peer"
+	"github.com/VoneChain-CS/fabric-gm/common/crypto"
+	"github.com/VoneChain-CS/fabric-gm/protoutil/fakes"
 	"github.com/stretchr/testify/assert"
 )
 

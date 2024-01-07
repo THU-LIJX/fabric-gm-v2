@@ -13,10 +13,10 @@ import (
 	"time"
 
 	"github.com/golang/protobuf/proto"
-	m "github.com/hyperledger/fabric-protos-go/msp"
-	"github.com/hyperledger/fabric/bccsp"
-	idemixbccsp "github.com/hyperledger/fabric/bccsp/idemix"
-	"github.com/hyperledger/fabric/bccsp/sw"
+	m "github.com/VoneChain-CS/fabric-gm-protos-go/msp"
+	"github.com/VoneChain-CS/fabric-gm/bccsp"
+	idemixbccsp "github.com/VoneChain-CS/fabric-gm/bccsp/idemix"
+	"github.com/VoneChain-CS/fabric-gm/bccsp/sw"
 	"github.com/pkg/errors"
 	"go.uber.org/zap/zapcore"
 )

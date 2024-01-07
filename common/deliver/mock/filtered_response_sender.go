@@ -4,9 +4,9 @@ package mock
 import (
 	"sync"
 
-	"github.com/hyperledger/fabric/common/deliver"
-	"github.com/hyperledger/fabric/protoutil"
-	"github.com/hyperledger/fabric-protos-go/common"
+	"github.com/VoneChain-CS/fabric-gm/common/deliver"
+	"github.com/VoneChain-CS/fabric-gm/protoutil"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/common"
 )
 
 type FilteredResponseSender struct {

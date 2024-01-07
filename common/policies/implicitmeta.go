@@ -9,10 +9,10 @@ package policies
 import (
 	"bytes"
 	"fmt"
-	"github.com/hyperledger/fabric/msp"
-	"github.com/hyperledger/fabric/protoutil"
+	"github.com/VoneChain-CS/fabric-gm/msp"
+	"github.com/VoneChain-CS/fabric-gm/protoutil"
 	"github.com/golang/protobuf/proto"
-	cb "github.com/hyperledger/fabric-protos-go/common"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
 	"go.uber.org/zap/zapcore"
 )
 

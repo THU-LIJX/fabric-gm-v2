@@ -13,8 +13,8 @@ import (
 	"fmt"
 
 	"github.com/golang/protobuf/proto"
-	cb "github.com/hyperledger/fabric-protos-go/common"
-	pb "github.com/hyperledger/fabric-protos-go/peer"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	pb "github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 )
 
 // Application is a copy of the orderer configuration with the addition of an anchor peers

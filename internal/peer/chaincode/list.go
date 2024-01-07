@@ -14,11 +14,11 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/hyperledger/fabric/bccsp"
-	"github.com/hyperledger/fabric/protoutil"
+	"github.com/VoneChain-CS/fabric-gm/bccsp"
+	"github.com/VoneChain-CS/fabric-gm/protoutil"
 	"github.com/golang/protobuf/proto"
-	cb "github.com/hyperledger/fabric-protos-go/common"
-	pb "github.com/hyperledger/fabric-protos-go/peer"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	pb "github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 )

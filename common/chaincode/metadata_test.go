@@ -9,7 +9,7 @@ package chaincode
 import (
 	"testing"
 
-	"github.com/hyperledger/fabric-protos-go/gossip"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/gossip"
 	"github.com/stretchr/testify/assert"
 )
 

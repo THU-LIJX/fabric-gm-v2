@@ -11,10 +11,10 @@ import (
 
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/ptypes/empty"
-	"github.com/hyperledger/fabric-protos-go/common"
-	"github.com/hyperledger/fabric-protos-go/msp"
-	"github.com/hyperledger/fabric-protos-go/orderer"
-	"github.com/hyperledger/fabric-protos-go/orderer/etcdraft"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/msp"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/orderer"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/orderer/etcdraft"
 )
 
 type DynamicOrdererGroup struct {

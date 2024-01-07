@@ -10,10 +10,10 @@ import (
 	"fmt"
 	"sync"
 
-	endorsement "github.com/hyperledger/fabric/core/handlers/endorsement/api"
-	endorsement3 "github.com/hyperledger/fabric/core/handlers/endorsement/api/identities"
-	"github.com/hyperledger/fabric/core/transientstore"
-	pb "github.com/hyperledger/fabric-protos-go/peer"
+	endorsement "github.com/VoneChain-CS/fabric-gm/core/handlers/endorsement/api"
+	endorsement3 "github.com/VoneChain-CS/fabric-gm/core/handlers/endorsement/api/identities"
+	"github.com/VoneChain-CS/fabric-gm/core/transientstore"
+	pb "github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 	"github.com/pkg/errors"
 )
 

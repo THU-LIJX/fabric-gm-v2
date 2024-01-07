@@ -4,8 +4,8 @@ package fake
 import (
 	"sync"
 
-	"github.com/hyperledger/fabric-protos-go/gossip"
-	"github.com/hyperledger/fabric/internal/pkg/peer/blocksprovider"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/gossip"
+	"github.com/VoneChain-CS/fabric-gm/internal/pkg/peer/blocksprovider"
 )
 
 type GossipServiceAdapter struct {

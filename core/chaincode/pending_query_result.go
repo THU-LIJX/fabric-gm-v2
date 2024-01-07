@@ -7,9 +7,9 @@ SPDX-License-Identifier: Apache-2.0
 package chaincode
 
 import (
-	commonledger "github.com/hyperledger/fabric/common/ledger"
+	commonledger "github.com/VoneChain-CS/fabric-gm/common/ledger"
 	"github.com/golang/protobuf/proto"
-	pb "github.com/hyperledger/fabric-protos-go/peer"
+	pb "github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 )
 
 type PendingQueryResult struct {

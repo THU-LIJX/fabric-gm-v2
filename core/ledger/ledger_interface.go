@@ -10,15 +10,15 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/hyperledger/fabric/bccsp"
-	commonledger "github.com/hyperledger/fabric/common/ledger"
-	"github.com/hyperledger/fabric/common/metrics"
+	"github.com/VoneChain-CS/fabric-gm/bccsp"
+	commonledger "github.com/VoneChain-CS/fabric-gm/common/ledger"
+	"github.com/VoneChain-CS/fabric-gm/common/metrics"
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric-lib-go/healthz"
-	"github.com/hyperledger/fabric-protos-go/common"
-	"github.com/hyperledger/fabric-protos-go/ledger/rwset"
-	"github.com/hyperledger/fabric-protos-go/ledger/rwset/kvrwset"
-	"github.com/hyperledger/fabric-protos-go/peer"
+	"github.com/VoneChain-CS/fabric-gm-lib-go/healthz"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/ledger/rwset"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/ledger/rwset/kvrwset"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 )
 
 // Initializer encapsulates dependencies for PeerLedgerProvider

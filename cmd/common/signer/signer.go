@@ -15,10 +15,10 @@ import (
 	"io/ioutil"
 	"math/big"
 
-	"github.com/hyperledger/fabric/bccsp/utils"
-	"github.com/hyperledger/fabric/common/util"
-	"github.com/hyperledger/fabric/protoutil"
-	"github.com/hyperledger/fabric-protos-go/msp"
+	"github.com/VoneChain-CS/fabric-gm/bccsp/utils"
+	"github.com/VoneChain-CS/fabric-gm/common/util"
+	"github.com/VoneChain-CS/fabric-gm/protoutil"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/msp"
 	"github.com/pkg/errors"
 )
 

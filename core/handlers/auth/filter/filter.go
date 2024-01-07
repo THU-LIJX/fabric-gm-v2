@@ -9,8 +9,8 @@ package filter
 import (
 	"context"
 
-	"github.com/hyperledger/fabric/core/handlers/auth"
-	"github.com/hyperledger/fabric-protos-go/peer"
+	"github.com/VoneChain-CS/fabric-gm/core/handlers/auth"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 )
 
 // NewFilter creates a new Filter

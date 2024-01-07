@@ -10,9 +10,9 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/hyperledger/fabric/protoutil"
+	"github.com/VoneChain-CS/fabric-gm/protoutil"
 	"github.com/golang/protobuf/proto"
-	cb "github.com/hyperledger/fabric-protos-go/common"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
 )
 
 func computePoliciesMapUpdate(original, updated map[string]*cb.ConfigPolicy) (readSet, writeSet, sameSet map[string]*cb.ConfigPolicy, updatedMembers bool) {

@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hyperledger/fabric/common/ledger/testutil"
-	"github.com/hyperledger/fabric-protos-go/common"
+	"github.com/VoneChain-CS/fabric-gm/common/ledger/testutil"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/common"
 	"github.com/stretchr/testify/assert"
 )
 

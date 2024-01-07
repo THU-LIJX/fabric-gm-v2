@@ -7,11 +7,11 @@ SPDX-License-Identifier: Apache-2.0
 package valinforetriever
 
 import (
-	"github.com/hyperledger/fabric/core/committer/txvalidator/v20/plugindispatcher"
-	"github.com/hyperledger/fabric/core/ledger"
+	"github.com/VoneChain-CS/fabric-gm/core/committer/txvalidator/v20/plugindispatcher"
+	"github.com/VoneChain-CS/fabric-gm/core/ledger"
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric-protos-go/common"
-	"github.com/hyperledger/fabric-protos-go/peer"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 )
 
 //go:generate mockery -dir . -name LifecycleResources -case underscore -output mocks/

@@ -10,7 +10,7 @@ import (
 	"github.com/tjfoc/gmsm/sm2"
 	"testing"
 
-	"github.com/hyperledger/fabric-protos-go/msp"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/msp"
 
 	"github.com/onsi/gomega"
 )

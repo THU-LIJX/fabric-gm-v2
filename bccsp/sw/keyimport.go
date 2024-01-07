@@ -10,11 +10,11 @@ import (
 	"crypto/ecdsa"
 	"errors"
 	"fmt"
-	"github.com/hyperledger/fabric/bccsp/utils"
+	"github.com/VoneChain-CS/fabric-gm/bccsp/utils"
 	"github.com/tjfoc/gmsm/sm2"
 	"reflect"
 
-	"github.com/hyperledger/fabric/bccsp"
+	"github.com/VoneChain-CS/fabric-gm/bccsp"
 )
 
 type aes256ImportKeyOptsKeyImporter struct{}

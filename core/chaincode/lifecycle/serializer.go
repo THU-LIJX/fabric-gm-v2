@@ -11,8 +11,8 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/hyperledger/fabric/common/util"
-	lb "github.com/hyperledger/fabric-protos-go/peer/lifecycle"
+	"github.com/VoneChain-CS/fabric-gm/common/util"
+	lb "github.com/VoneChain-CS/fabric-gm-protos-go/peer/lifecycle"
 
 	"github.com/golang/protobuf/proto"
 	"github.com/pkg/errors"

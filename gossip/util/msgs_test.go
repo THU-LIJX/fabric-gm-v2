@@ -9,9 +9,9 @@ package util
 import (
 	"testing"
 
-	"github.com/hyperledger/fabric/gossip/common"
-	"github.com/hyperledger/fabric/gossip/protoext"
-	proto "github.com/hyperledger/fabric-protos-go/gossip"
+	"github.com/VoneChain-CS/fabric-gm/gossip/common"
+	"github.com/VoneChain-CS/fabric-gm/gossip/protoext"
+	proto "github.com/VoneChain-CS/fabric-gm-protos-go/gossip"
 	"github.com/stretchr/testify/assert"
 )
 

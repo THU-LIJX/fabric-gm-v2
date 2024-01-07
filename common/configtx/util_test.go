@@ -10,8 +10,8 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/hyperledger/fabric/protoutil"
-	cb "github.com/hyperledger/fabric-protos-go/common"
+	"github.com/VoneChain-CS/fabric-gm/protoutil"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -4,8 +4,8 @@ package mock
 import (
 	"sync"
 
-	"github.com/hyperledger/fabric/msp"
-	"github.com/hyperledger/fabric-protos-go/peer"
+	"github.com/VoneChain-CS/fabric-gm/msp"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 )
 
 type ApplicationOrgConfig struct {

@@ -7,8 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package validator
 
 import (
-	"github.com/hyperledger/fabric-protos-go/common"
-	"github.com/hyperledger/fabric-protos-go/peer"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 	"github.com/stretchr/testify/mock"
 )
 

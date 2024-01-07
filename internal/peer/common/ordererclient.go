@@ -9,8 +9,8 @@ import (
 	"context"
 	tls "github.com/tjfoc/gmtls"
 
-	ab "github.com/hyperledger/fabric-protos-go/orderer"
-	"github.com/hyperledger/fabric/internal/pkg/comm"
+	ab "github.com/VoneChain-CS/fabric-gm-protos-go/orderer"
+	"github.com/VoneChain-CS/fabric-gm/internal/pkg/comm"
 	"github.com/pkg/errors"
 )
 

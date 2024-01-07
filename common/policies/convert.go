@@ -9,7 +9,7 @@ package policies
 import (
 	"fmt"
 
-	cb "github.com/hyperledger/fabric-protos-go/common"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
 	"github.com/pkg/errors"
 )
 

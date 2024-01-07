@@ -11,13 +11,13 @@ import (
 	"testing"
 	"time"
 
-	cb "github.com/hyperledger/fabric-protos-go/common"
-	"github.com/hyperledger/fabric/common/channelconfig"
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/orderer/consensus/solo/mocks"
-	mockblockcutter "github.com/hyperledger/fabric/orderer/mocks/common/blockcutter"
-	mockmultichannel "github.com/hyperledger/fabric/orderer/mocks/common/multichannel"
-	"github.com/hyperledger/fabric/protoutil"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	"github.com/VoneChain-CS/fabric-gm/common/channelconfig"
+	"github.com/VoneChain-CS/fabric-gm/common/flogging"
+	"github.com/VoneChain-CS/fabric-gm/orderer/consensus/solo/mocks"
+	mockblockcutter "github.com/VoneChain-CS/fabric-gm/orderer/mocks/common/blockcutter"
+	mockmultichannel "github.com/VoneChain-CS/fabric-gm/orderer/mocks/common/multichannel"
+	"github.com/VoneChain-CS/fabric-gm/protoutil"
 	"github.com/stretchr/testify/assert"
 )
 

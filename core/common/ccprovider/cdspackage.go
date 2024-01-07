@@ -23,9 +23,9 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/hyperledger/fabric/bccsp"
+	"github.com/VoneChain-CS/fabric-gm/bccsp"
 	"github.com/golang/protobuf/proto"
-	pb "github.com/hyperledger/fabric-protos-go/peer"
+	pb "github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 )
 
 //----- CDSData ------

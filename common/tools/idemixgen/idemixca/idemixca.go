@@ -9,11 +9,11 @@ package idemixca
 import (
 	"github.com/tjfoc/gmsm/sm2"
 
-	"github.com/hyperledger/fabric/idemix"
-	"github.com/hyperledger/fabric/msp"
+	"github.com/VoneChain-CS/fabric-gm/idemix"
+	"github.com/VoneChain-CS/fabric-gm/msp"
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric-amcl/amcl/FP256BN"
-	m "github.com/hyperledger/fabric-protos-go/msp"
+	"github.com/VoneChain-CS/fabric-gm-amcl/amcl/FP256BN"
+	m "github.com/VoneChain-CS/fabric-gm-protos-go/msp"
 	"github.com/pkg/errors"
 )
 

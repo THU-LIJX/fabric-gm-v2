@@ -4,8 +4,8 @@ package mock
 import (
 	"sync"
 
-	"github.com/hyperledger/fabric/core/ledger"
-	"github.com/hyperledger/fabric-protos-go/peer"
+	"github.com/VoneChain-CS/fabric-gm/core/ledger"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 )
 
 type MembershipInfoProvider struct {

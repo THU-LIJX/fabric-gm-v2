@@ -10,9 +10,9 @@ import (
 	"fmt"
 
 	"github.com/golang/protobuf/proto"
-	cb "github.com/hyperledger/fabric-protos-go/common"
-	mb "github.com/hyperledger/fabric-protos-go/msp"
-	pb "github.com/hyperledger/fabric-protos-go/peer"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	mb "github.com/VoneChain-CS/fabric-gm-protos-go/msp"
+	pb "github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 )
 
 // newOrgConfigGroup returns an config group for an organization.

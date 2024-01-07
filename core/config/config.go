@@ -9,7 +9,7 @@ package config
 
 import (
 	"fmt"
-	"github.com/hyperledger/fabric/common/flogging"
+	"github.com/VoneChain-CS/fabric-gm/common/flogging"
 	"os"
 	"path/filepath"
 

@@ -13,9 +13,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hyperledger/fabric/common/capabilities"
-	cb "github.com/hyperledger/fabric-protos-go/common"
-	ab "github.com/hyperledger/fabric-protos-go/orderer"
+	"github.com/VoneChain-CS/fabric-gm/common/capabilities"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	ab "github.com/VoneChain-CS/fabric-gm-protos-go/orderer"
 	"github.com/pkg/errors"
 )
 

@@ -12,10 +12,10 @@ import (
 	"fmt"
 	"time"
 
-	mspproto "github.com/hyperledger/fabric-protos-go/msp"
-	"github.com/hyperledger/fabric/common/policies"
-	"github.com/hyperledger/fabric/msp"
-	"github.com/hyperledger/fabric/protoutil"
+	mspproto "github.com/VoneChain-CS/fabric-gm-protos-go/msp"
+	"github.com/VoneChain-CS/fabric-gm/common/policies"
+	"github.com/VoneChain-CS/fabric-gm/msp"
+	"github.com/VoneChain-CS/fabric-gm/protoutil"
 	"github.com/stretchr/testify/mock"
 )
 

@@ -12,8 +12,8 @@ import (
 	"github.com/tjfoc/gmsm/sm3"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric-protos-go/common"
-	"github.com/hyperledger/fabric-protos-go/peer"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 	"github.com/pkg/errors"
 )
 

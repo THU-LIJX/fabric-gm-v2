@@ -10,13 +10,13 @@ import (
 	"fmt"
 	"testing"
 
-	cb "github.com/hyperledger/fabric-protos-go/common"
-	"github.com/hyperledger/fabric-protos-go/orderer"
-	"github.com/hyperledger/fabric/bccsp/sw"
-	"github.com/hyperledger/fabric/common/channelconfig"
-	"github.com/hyperledger/fabric/internal/pkg/identity"
-	"github.com/hyperledger/fabric/orderer/common/msgprocessor/mocks"
-	"github.com/hyperledger/fabric/protoutil"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/orderer"
+	"github.com/VoneChain-CS/fabric-gm/bccsp/sw"
+	"github.com/VoneChain-CS/fabric-gm/common/channelconfig"
+	"github.com/VoneChain-CS/fabric-gm/internal/pkg/identity"
+	"github.com/VoneChain-CS/fabric-gm/orderer/common/msgprocessor/mocks"
+	"github.com/VoneChain-CS/fabric-gm/protoutil"
 	"github.com/stretchr/testify/assert"
 )
 

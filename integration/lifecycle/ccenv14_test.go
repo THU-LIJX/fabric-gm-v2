@@ -12,7 +12,7 @@ import (
 	"path/filepath"
 	"syscall"
 
-	"github.com/hyperledger/fabric/integration/nwo"
+	"github.com/VoneChain-CS/fabric-gm/integration/nwo"
 	docker "github.com/fsouza/go-dockerclient"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

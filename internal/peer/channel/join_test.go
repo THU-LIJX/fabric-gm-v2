@@ -13,8 +13,8 @@ import (
 	"testing"
 	"time"
 
-	pb "github.com/hyperledger/fabric-protos-go/peer"
-	"github.com/hyperledger/fabric/internal/peer/common"
+	pb "github.com/VoneChain-CS/fabric-gm-protos-go/peer"
+	"github.com/VoneChain-CS/fabric-gm/internal/peer/common"
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/assert"
 )

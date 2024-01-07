@@ -9,7 +9,7 @@ package scc
 import (
 	"testing"
 
-	pb "github.com/hyperledger/fabric-protos-go/peer"
+	pb "github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 	"github.com/stretchr/testify/assert"
 )
 

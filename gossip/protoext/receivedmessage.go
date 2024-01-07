@@ -9,9 +9,9 @@ package protoext
 import (
 	"fmt"
 
-	"github.com/hyperledger/fabric/gossip/api"
-	"github.com/hyperledger/fabric/gossip/common"
-	"github.com/hyperledger/fabric-protos-go/gossip"
+	"github.com/VoneChain-CS/fabric-gm/gossip/api"
+	"github.com/VoneChain-CS/fabric-gm/gossip/common"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/gossip"
 )
 
 // ReceivedMessage is a GossipMessage wrapper that

@@ -3,8 +3,8 @@
 package mocks
 
 import (
-	common "github.com/hyperledger/fabric-protos-go/common"
-	cluster "github.com/hyperledger/fabric/orderer/common/cluster"
+	common "github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	cluster "github.com/VoneChain-CS/fabric-gm/orderer/common/cluster"
 
 	mock "github.com/stretchr/testify/mock"
 )

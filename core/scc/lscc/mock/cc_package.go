@@ -4,9 +4,9 @@ package mock
 import (
 	"sync"
 
-	"github.com/hyperledger/fabric/core/common/ccprovider"
+	"github.com/VoneChain-CS/fabric-gm/core/common/ccprovider"
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric-protos-go/peer"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 )
 
 type CCPackage struct {

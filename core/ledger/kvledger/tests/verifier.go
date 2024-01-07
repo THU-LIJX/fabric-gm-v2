@@ -9,14 +9,14 @@ package tests
 import (
 	"testing"
 
-	"github.com/hyperledger/fabric/core/ledger"
-	"github.com/hyperledger/fabric/internal/pkg/txflags"
+	"github.com/VoneChain-CS/fabric-gm/core/ledger"
+	"github.com/VoneChain-CS/fabric-gm/internal/pkg/txflags"
 	"github.com/davecgh/go-spew/spew"
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric-protos-go/common"
-	"github.com/hyperledger/fabric-protos-go/ledger/queryresult"
-	"github.com/hyperledger/fabric-protos-go/ledger/rwset/kvrwset"
-	protopeer "github.com/hyperledger/fabric-protos-go/peer"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/ledger/queryresult"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/ledger/rwset/kvrwset"
+	protopeer "github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 	"github.com/stretchr/testify/assert"
 )
 

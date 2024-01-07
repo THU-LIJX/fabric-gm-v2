@@ -9,8 +9,8 @@ package capabilities
 import (
 	"testing"
 
-	"github.com/hyperledger/fabric/msp"
-	cb "github.com/hyperledger/fabric-protos-go/common"
+	"github.com/VoneChain-CS/fabric-gm/msp"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
 	"github.com/stretchr/testify/assert"
 )
 

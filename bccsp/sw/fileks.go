@@ -21,7 +21,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/hyperledger/fabric/bccsp"
+	"github.com/VoneChain-CS/fabric-gm/bccsp"
 )
 
 // NewFileBasedKeyStore instantiated a file-based key store at a given position.

@@ -14,8 +14,8 @@ import (
 	"math/big"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric-amcl/amcl"
-	"github.com/hyperledger/fabric-amcl/amcl/FP256BN"
+	"github.com/VoneChain-CS/fabric-gm-amcl/amcl"
+	"github.com/VoneChain-CS/fabric-gm-amcl/amcl/FP256BN"
 	"github.com/pkg/errors"
 )
 

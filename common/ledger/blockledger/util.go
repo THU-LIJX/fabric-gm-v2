@@ -7,10 +7,10 @@ SPDX-License-Identifier: Apache-2.0
 package blockledger
 
 import (
-	"github.com/hyperledger/fabric/protoutil"
+	"github.com/VoneChain-CS/fabric-gm/protoutil"
 	"github.com/golang/protobuf/proto"
-	cb "github.com/hyperledger/fabric-protos-go/common"
-	ab "github.com/hyperledger/fabric-protos-go/orderer"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	ab "github.com/VoneChain-CS/fabric-gm-protos-go/orderer"
 )
 
 var closedChan chan struct{}

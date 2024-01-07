@@ -12,8 +12,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	cb "github.com/hyperledger/fabric-protos-go/common"
-	"github.com/hyperledger/fabric/internal/peer/common"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	"github.com/VoneChain-CS/fabric-gm/internal/peer/common"
 	"github.com/stretchr/testify/assert"
 )
 

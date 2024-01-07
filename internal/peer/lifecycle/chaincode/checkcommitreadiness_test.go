@@ -11,11 +11,11 @@ import (
 	"fmt"
 
 	"github.com/golang/protobuf/proto"
-	pb "github.com/hyperledger/fabric-protos-go/peer"
-	lb "github.com/hyperledger/fabric-protos-go/peer/lifecycle"
-	"github.com/hyperledger/fabric/bccsp/sw"
-	"github.com/hyperledger/fabric/internal/peer/lifecycle/chaincode"
-	"github.com/hyperledger/fabric/internal/peer/lifecycle/chaincode/mock"
+	pb "github.com/VoneChain-CS/fabric-gm-protos-go/peer"
+	lb "github.com/VoneChain-CS/fabric-gm-protos-go/peer/lifecycle"
+	"github.com/VoneChain-CS/fabric-gm/bccsp/sw"
+	"github.com/VoneChain-CS/fabric-gm/internal/peer/lifecycle/chaincode"
+	"github.com/VoneChain-CS/fabric-gm/internal/peer/lifecycle/chaincode/mock"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 

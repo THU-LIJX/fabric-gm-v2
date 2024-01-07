@@ -4,7 +4,7 @@ package mock
 import (
 	"sync"
 
-	"github.com/hyperledger/fabric-protos-go/ledger/queryresult"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/ledger/queryresult"
 )
 
 type StateIterator struct {

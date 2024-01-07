@@ -17,9 +17,9 @@ import (
 	"time"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric-config/configtx/membership"
-	cb "github.com/hyperledger/fabric-protos-go/common"
-	mb "github.com/hyperledger/fabric-protos-go/msp"
+	"github.com/VoneChain-CS/fabric-gm-config/configtx/membership"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	mb "github.com/VoneChain-CS/fabric-gm-protos-go/msp"
 )
 
 // MSP is the configuration information for a Fabric MSP.

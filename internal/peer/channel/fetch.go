@@ -13,9 +13,9 @@ import (
 	"strings"
 
 	"github.com/golang/protobuf/proto"
-	cb "github.com/hyperledger/fabric-protos-go/common"
-	"github.com/hyperledger/fabric/internal/peer/common"
-	"github.com/hyperledger/fabric/protoutil"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	"github.com/VoneChain-CS/fabric-gm/internal/peer/common"
+	"github.com/VoneChain-CS/fabric-gm/protoutil"
 	"github.com/spf13/cobra"
 )
 

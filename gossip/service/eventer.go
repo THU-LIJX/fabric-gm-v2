@@ -9,9 +9,9 @@ package service
 import (
 	"reflect"
 
-	"github.com/hyperledger/fabric/common/channelconfig"
-	"github.com/hyperledger/fabric/msp"
-	"github.com/hyperledger/fabric-protos-go/peer"
+	"github.com/VoneChain-CS/fabric-gm/common/channelconfig"
+	"github.com/VoneChain-CS/fabric-gm/msp"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 )
 
 // Config enumerates the configuration methods required by gossip

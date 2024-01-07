@@ -7,8 +7,8 @@ SPDX-License-Identifier: Apache-2.0
 package main
 
 import (
-	"github.com/hyperledger/fabric-chaincode-go/shim"
-	pb "github.com/hyperledger/fabric-protos-go/peer"
+	"github.com/VoneChain-CS/fabric-gm-chaincode-go/shim"
+	pb "github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 )
 
 // New returns an implementation of the chaincode interface

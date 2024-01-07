@@ -9,10 +9,10 @@ package endorsertx
 import (
 	"regexp"
 
-	"github.com/hyperledger/fabric-protos-go/peer"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 
-	"github.com/hyperledger/fabric/pkg/tx"
-	"github.com/hyperledger/fabric/protoutil"
+	"github.com/VoneChain-CS/fabric-gm/pkg/tx"
+	"github.com/VoneChain-CS/fabric-gm/protoutil"
 	"github.com/pkg/errors"
 )
 

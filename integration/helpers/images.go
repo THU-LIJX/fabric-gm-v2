@@ -11,7 +11,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/hyperledger/fabric/common/util"
+	"github.com/VoneChain-CS/fabric-gm/common/util"
 	docker "github.com/fsouza/go-dockerclient"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

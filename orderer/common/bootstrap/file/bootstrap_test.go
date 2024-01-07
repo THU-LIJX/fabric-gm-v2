@@ -10,8 +10,8 @@ import (
 	"testing"
 
 	"github.com/golang/protobuf/proto"
-	cb "github.com/hyperledger/fabric-protos-go/common"
-	bootfile "github.com/hyperledger/fabric/orderer/common/bootstrap/file"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	bootfile "github.com/VoneChain-CS/fabric-gm/orderer/common/bootstrap/file"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

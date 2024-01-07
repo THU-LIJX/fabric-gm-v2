@@ -12,8 +12,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/hyperledger/fabric/protoutil"
-	"github.com/hyperledger/fabric-protos-go/msp"
+	"github.com/VoneChain-CS/fabric-gm/protoutil"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/msp"
 	"github.com/stretchr/testify/assert"
 )
 

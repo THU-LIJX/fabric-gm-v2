@@ -7,12 +7,12 @@ SPDX-License-Identifier: Apache-2.0
 package privdata
 
 import (
-	"github.com/hyperledger/fabric/common/cauthdsl"
-	"github.com/hyperledger/fabric/common/policies"
-	"github.com/hyperledger/fabric/msp"
+	"github.com/VoneChain-CS/fabric-gm/common/cauthdsl"
+	"github.com/VoneChain-CS/fabric-gm/common/policies"
+	"github.com/VoneChain-CS/fabric-gm/msp"
 	"github.com/golang/protobuf/proto"
-	mspp "github.com/hyperledger/fabric-protos-go/msp"
-	"github.com/hyperledger/fabric-protos-go/peer"
+	mspp "github.com/VoneChain-CS/fabric-gm-protos-go/msp"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 	"github.com/pkg/errors"
 )
 

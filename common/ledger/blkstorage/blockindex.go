@@ -13,13 +13,13 @@ import (
 	"path"
 	"unicode/utf8"
 
-	"github.com/hyperledger/fabric/common/ledger/snapshot"
-	"github.com/hyperledger/fabric/common/ledger/util"
-	"github.com/hyperledger/fabric/common/ledger/util/leveldbhelper"
-	"github.com/hyperledger/fabric/internal/pkg/txflags"
+	"github.com/VoneChain-CS/fabric-gm/common/ledger/snapshot"
+	"github.com/VoneChain-CS/fabric-gm/common/ledger/util"
+	"github.com/VoneChain-CS/fabric-gm/common/ledger/util/leveldbhelper"
+	"github.com/VoneChain-CS/fabric-gm/internal/pkg/txflags"
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric-protos-go/common"
-	"github.com/hyperledger/fabric-protos-go/peer"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 	"github.com/pkg/errors"
 )
 

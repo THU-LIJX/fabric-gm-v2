@@ -11,7 +11,7 @@ import (
 	"fmt"
 
 	"github.com/golang/protobuf/proto"
-	cb "github.com/hyperledger/fabric-protos-go/common"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
 )
 
 // Compute computes the difference between two *cb.Configs and returns the

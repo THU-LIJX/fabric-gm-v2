@@ -9,9 +9,9 @@ package genesis
 import (
 	"testing"
 
-	"github.com/hyperledger/fabric/protoutil"
+	"github.com/VoneChain-CS/fabric-gm/protoutil"
 	"github.com/golang/protobuf/proto"
-	cb "github.com/hyperledger/fabric-protos-go/common"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
 	"github.com/stretchr/testify/assert"
 )
 

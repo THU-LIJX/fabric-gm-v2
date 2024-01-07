@@ -9,9 +9,9 @@ package etcdraft
 import (
 	"testing"
 
-	cb "github.com/hyperledger/fabric-protos-go/common"
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/protoutil"
+	cb "github.com/VoneChain-CS/fabric-gm-protos-go/common"
+	"github.com/VoneChain-CS/fabric-gm/common/flogging"
+	"github.com/VoneChain-CS/fabric-gm/protoutil"
 	"github.com/stretchr/testify/assert"
 	"go.uber.org/zap"
 )

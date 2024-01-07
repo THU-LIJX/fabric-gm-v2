@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric-protos-go/msp"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/msp"
 )
 
 // ExpiresAt returns when the given identity expires, or a zero time.Time

@@ -4,8 +4,8 @@ package fake
 import (
 	"sync"
 
-	"github.com/hyperledger/fabric/core/endorser"
-	"github.com/hyperledger/fabric-protos-go/transientstore"
+	"github.com/VoneChain-CS/fabric-gm/core/endorser"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/transientstore"
 )
 
 type PrivateDataDistributor struct {

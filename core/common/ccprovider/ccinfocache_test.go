@@ -25,9 +25,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/hyperledger/fabric/bccsp/sw"
+	"github.com/VoneChain-CS/fabric-gm/bccsp/sw"
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric-protos-go/peer"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/peer"
 	"github.com/stretchr/testify/assert"
 )
 

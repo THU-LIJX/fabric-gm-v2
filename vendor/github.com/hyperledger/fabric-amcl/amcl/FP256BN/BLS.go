@@ -21,7 +21,7 @@ under the License.
 
 package FP256BN
 
-import "github.com/hyperledger/fabric-amcl/amcl"
+import "github.com/VoneChain-CS/fabric-gm-amcl/amcl"
 
 
 

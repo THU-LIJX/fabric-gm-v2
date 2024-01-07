@@ -15,10 +15,10 @@ import (
 
 	"code.cloudfoundry.org/clock"
 	"github.com/golang/protobuf/proto"
-	"github.com/hyperledger/fabric-protos-go/orderer"
-	"github.com/hyperledger/fabric-protos-go/orderer/etcdraft"
-	"github.com/hyperledger/fabric/common/flogging"
-	"github.com/hyperledger/fabric/protoutil"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/orderer"
+	"github.com/VoneChain-CS/fabric-gm-protos-go/orderer/etcdraft"
+	"github.com/VoneChain-CS/fabric-gm/common/flogging"
+	"github.com/VoneChain-CS/fabric-gm/protoutil"
 	"go.etcd.io/etcd/raft"
 	"go.etcd.io/etcd/raft/raftpb"
 )
